@@ -15,14 +15,19 @@ public class User {
 	//昵称
 	private String name;
 	//用户组 1为超管、2为普管、3游客
-	private int group;
+	private int role;
 	
-	public User(int id, String account, String password, String name, int group) {
+	public User(int id, String account, String password, String name, int role) {
 		this.id = id;
 		this.account = account;
 		this.password = password;
 		this.name = name;
-		this.group = group;
+		this.role = role;
+	}
+	
+	public void printUserInfo() {
+		System.out.println("id:" + getId() + "\taccount:" + getAccount() + "\tpassword:"
+				+ getPassword() + "\tname:" + getName() + "\trole:" + getRole());
 	}
 
 	public int getId() {
@@ -50,11 +55,11 @@ public class User {
 		this.name = name;
 	}
 	
-	public int getGroup() {
-		return group;
+	public int getRole() {
+		return role;
 	}
-	public void setGroup(int group) {
-		this.group = group;
+	public void setRole(int role) {
+		this.role = role;
 	}
 	
 	

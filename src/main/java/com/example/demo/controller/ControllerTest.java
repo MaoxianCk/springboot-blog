@@ -16,11 +16,18 @@ public class ControllerTest {
 		try {
 			user = userDaoImpl.selectUserById(1);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		if (user != null) {
-			System.out.println(user.getId() + user.getName());
+			System.out.println("id:"+user.getId() +"\tname:"+ user.getName());
+		}
+		else {
+			System.out.println("------------------=faild-=-==-=-=-=-=-=-=-=-==-=-=-=");
+			System.out.println("------------------=faild-=-==-=-=-=-=-=-=-=-==-=-=-=");
+			System.out.println("------------------=faild-=-==-=-=-=-=-=-=-=-==-=-=-=");
+			System.out.println("------------------=faild-=-==-=-=-=-=-=-=-=-==-=-=-=");
+			System.out.println("------------------=faild-=-==-=-=-=-=-=-=-=-==-=-=-=");
+			System.out.println("------------------=faild-=-==-=-=-=-=-=-=-=-==-=-=-=");
 		}
 		return new ModelAndView("Home");
 	}

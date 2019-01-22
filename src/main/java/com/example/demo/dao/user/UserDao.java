@@ -6,14 +6,15 @@ import com.example.demo.entity.User;
 
 
 public interface UserDao {
-	public boolean insertUser(User recordUser);
+	public int insertUser(User recordUser) throws Exception;
 	
-	public boolean deleteUserById(int recordId);
+	public int deleteUserById(int recordId) throws Exception;
 	
 	public User selectUserById(int recordId) throws Exception;
-	public User selectUserByAccount(String recordAccount);
-	public List<User> selectUserByName(String recordName);	
-	public List<User> selectUserByGroup(int recordGroup);
+	public User selectUserByAccount(String recordAccount) throws Exception;
+	public List<User> selectUserByName(String recordName) throws Exception;	
+	public List<User> selectUserByRole(int recordRole) throws Exception;
+	public List<User> selectUserAll() throws Exception;
 	
-	public boolean updateUser(User recordUser);
+	public int updateUser(User recordUser) throws Exception;
 }

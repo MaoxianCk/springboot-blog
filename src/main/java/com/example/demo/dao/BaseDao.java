@@ -9,10 +9,12 @@ import java.sql.*;
  * @creat:2019-01-21 17:49
  */
 public class BaseDao {
-	private static String driver = "com.mysql.jdbc.Driver";
-	private static String url = "jdbc://localhost:3306/users";
+	
+	private static String driver = "com.mysql.cj.jdbc.Driver";
+	private static String url = "jdbc:mysql://localhost:3306/blog?serverTimezone=GMT";
 	private static String user = "root";
-	private static String password = "root";
+	private static String password = "123456";
+	
 	static {
 		try {
 			Class.forName(driver);
