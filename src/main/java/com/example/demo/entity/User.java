@@ -17,6 +17,14 @@ public class User {
 	//用户组 1为超管、2为普管、3游客
 	private int group;
 	
+	public User(int id, String account, String password, String name, int group) {
+		this.id = id;
+		this.account = account;
+		this.password = password;
+		this.name = name;
+		this.group = group;
+	}
+
 	public int getId() {
 		return id;
 	}

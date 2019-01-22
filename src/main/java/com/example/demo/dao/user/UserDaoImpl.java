@@ -1,5 +1,8 @@
 package com.example.demo.dao.user;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.List;
 
 import com.example.demo.dao.BaseDao;
@@ -20,9 +23,18 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 	}
 
 	@Override
-	public User selectUserById(int recordId) {
-		// TODO Auto-generated method stub
-		return null;
+	public User selectUserById(int recordId) throws Exception {
+		Connection conn = BaseDao.getConnection();
+		String sql = "select * from user_account where id = " + recordId;
+		PreparedStatement stmt = conn.prepareStatement(sql);
+		
+		ResultSet rs = stmt.executeQuery();
+
+		User user = new User(rs.getInt("id"), rs.getString("account"), rs.getString("password"), rs.getString("name"),
+				rs.getInt("group"));
+
+		BaseDao.closeAll(conn, stmt, rs);
+		return user;
 	}
 
 	@Override
