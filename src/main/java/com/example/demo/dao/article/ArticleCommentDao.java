@@ -1,21 +1,21 @@
 package com.example.demo.dao.article;
 
-import java.util.Date;
 import java.util.List;
 
 import com.example.demo.entity.ArticleComment;
 
 public interface ArticleCommentDao {
-	public boolean insertArticleComment(ArticleComment recordArticleComment);
+	public int insertArticleComment(ArticleComment recordArticleComment) throws Exception;
 	
-	public boolean deleteArticleCommentById(int recordId);
+	public int deleteArticleCommentById(int recordId) throws Exception;
 	
-	public ArticleComment selectArticleCommentById(int recordId);
-	public ArticleComment selectArticleCommentByArticleInfoId(int recordArticleInfoId);
-	public List<ArticleComment> selectArticleCommentByCreateTime(Date recordCreateTime);
-	public List<ArticleComment> selectArticleCommentByContentParts(String recordContentParts);
-	public List<ArticleComment> selectArticleCommentByName(String recordName);
-	public List<ArticleComment> selectArticleCommentByIsEffective(boolean recordIsEffective);
+	public ArticleComment selectArticleCommentById(int recordId) throws Exception;
+	public ArticleComment selectArticleCommentByArticleInfoId(int recordArticleInfoId) throws Exception;
+	public List<ArticleComment> selectArticleCommentByContentParts(String recordContentParts) throws Exception;
+	public List<ArticleComment> selectArticleCommentByName(String recordName) throws Exception;
+	public List<ArticleComment> selectArticleCommentByIsEffective(boolean recordIsEffective) throws Exception;
+	public List<ArticleComment> selectArticleCommentAll() throws Exception;
 	
-	public boolean updateArticleComment(ArticleComment recordArticleComment);
+	
+	public int updateArticleComment(ArticleComment recordArticleComment) throws Exception;
 }
