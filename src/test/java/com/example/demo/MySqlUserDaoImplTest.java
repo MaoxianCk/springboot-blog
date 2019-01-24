@@ -62,7 +62,7 @@ public class MySqlUserDaoImplTest {
 			_list = userDaoImpl.selectUserAll();
 			printUserList(_list);
 			
-			// 更新id为2的记录中 信息为 2,"99","99","99",3
+			// 更新id为2的记录中 为 2,"99","99","99",3
 			User updateUser=userDaoImpl.selectUserById(2);
 			updateUser.setAccount("99");
 			updateUser.setPassword("99");

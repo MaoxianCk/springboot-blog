@@ -1,20 +1,18 @@
 package com.example.demo.dao.article;
 
-import java.util.Date;
 import java.util.List;
 
 import com.example.demo.entity.ArticleContent;
 
 public interface ArticleContentDao {
-	public boolean insertArticleContent(ArticleContent recordArticleContent);
+	public int insertArticleContent(ArticleContent recordArticleContent) throws Exception;
 	
-	public boolean deleteArticleContentById(int recordId);
+	public int deleteArticleContentById(int recordId) throws Exception;
 	
-	public ArticleContent selectArticleContentById(int recordId);
-	public ArticleContent selectArticleContentByArticleInfoId(int recordArticleInfoId);
-	public List<ArticleContent> selectArticleContentByContentParts(String recordContentParts);
-	public List<ArticleContent> selectArticleContentByCreateTime(Date recordCreateTime);
-	public List<ArticleContent> selectArticleContentByModifiedTime(Date recordModifiedTime);
+	public ArticleContent selectArticleContentById(int recordId) throws Exception;
+	public ArticleContent selectArticleContentByArticleInfoId(int recordArticleInfoId) throws Exception;
+	public List<ArticleContent> selectArticleContentByContentParts(String recordContentParts) throws Exception;
+	public List<ArticleContent> selectArticleContentAll() throws Exception; 
 	
-	public boolean updateArticleContent(ArticleContent recordarticleContent);
+	public int updateArticleContent(ArticleContent recordArticleContent) throws Exception;
 }

@@ -9,12 +9,12 @@ import java.sql.*;
  * @creat:2019-01-21 17:49
  */
 public class BaseDao {
-	
+
 	private static String driver = "com.mysql.cj.jdbc.Driver";
 	private static String url = "jdbc:mysql://localhost:3306/blog?serverTimezone=Asia/Shanghai";
 	private static String user = "root";
 	private static String password = "123456";
-	
+
 	static {
 		try {
 			Class.forName(driver);
@@ -38,30 +38,16 @@ public class BaseDao {
 			stmt.close();
 		}
 	}
-
-	public int executeSQL(String preparedSql, Object[] param) throws ClassNotFoundException {
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		/* 处理SQL,执行SQL */
-		try {
-			conn = getConnection(); // 得到数据库连接
-			pstmt = conn.prepareStatement(preparedSql); // 得到PreparedStatement对象
-			if (param != null) {
-				for (int i = 0; i < param.length; i++) {
-					pstmt.setObject(i + 1, param[i]); // 为预编译sql设置参数
-				}
-			}
-			ResultSet num = pstmt.executeQuery(); // 执行SQL语句
-		} catch (SQLException e) {
-			e.printStackTrace(); // 处理SQLException异常
-		} finally {
-			try {
-				BaseDao.closeAll(conn, pstmt, null);
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		return 0;
-	}
+	/*
+	 * public int executeSQL(String preparedSql, Object[] param) throws
+	 * ClassNotFoundException { Connection conn = null; PreparedStatement pstmt =
+	 * null; try { conn = getConnection(); // 得到数据库连接 pstmt =
+	 * conn.prepareStatement(preparedSql); // 得到PreparedStatement对象 if (param !=
+	 * null) { for (int i = 0; i < param.length; i++) { pstmt.setObject(i + 1,
+	 * param[i]); // 为预编译sql设置参数 } } ResultSet num = pstmt.executeQuery(); //
+	 * 执行SQL语句 } catch (SQLException e) { e.printStackTrace(); // 处理SQLException异常 }
+	 * finally { try { BaseDao.closeAll(conn, pstmt, null); } catch (SQLException e)
+	 * { e.printStackTrace(); } } return 0; }
+	 */
 
 }

@@ -19,10 +19,10 @@ public class ArticleComment {
 	private String name;
 	// 该评论是否有效
 	private boolean isEffective;
-	// 该文章评论对应的文章信息表id号
+	// 该文章评论对应的文章表id号
 	private int articleInfoId;
 
-	public ArticleComment(int id, String content, Timestamp createTime, String name, boolean isEffective,
+	public ArticleComment(int id, String content,Timestamp createTime, String name, boolean isEffective,
 			int articleInfoId) {
 		super();
 		this.id = id;
@@ -32,10 +32,21 @@ public class ArticleComment {
 		this.isEffective = isEffective;
 		this.articleInfoId = articleInfoId;
 	}
+	
+	public ArticleComment(int id, String content, String name, boolean isEffective,
+			int articleInfoId) {
+		super();
+		this.id = id;
+		this.content = content;
+		this.createTime = new Timestamp(System.currentTimeMillis());
+		this.name = name;
+		this.isEffective = isEffective;
+		this.articleInfoId = articleInfoId;
+	}
 
 	public void printArticleCommentInfo() {
 		System.out.println("id:" + getId() + "\tcontent:" + getContent() + "\tcreateTime:" + getCreateTime() + "\tname:"
-				+ getName() + "isEffective:" + getIsEffective() + "\tarticleInfoId:" + getArticleInfoId());
+				+ getName() + "\tisEffective:" + getIsEffective() + "\tarticleInfoId:" + getArticleInfoId());
 	}
 
 	public int getId() {

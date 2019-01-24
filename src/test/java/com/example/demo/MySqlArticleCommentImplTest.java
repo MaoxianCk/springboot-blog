@@ -1,6 +1,5 @@
 package com.example.demo;
 
-import java.sql.Timestamp;
 import java.util.List;
 
 import org.junit.Test;
@@ -27,13 +26,11 @@ public class MySqlArticleCommentImplTest {
 			
 			//插入10条记录 时间为当前时间
 			for(int i=1;i<=10;i++) {
-				Timestamp timestamp=new Timestamp(System.currentTimeMillis());
-				articleCommentDaoImpl.insertArticleComment(new ArticleComment(0, "content "+String.valueOf(i),timestamp , String.valueOf(i), true, i));
+				articleCommentDaoImpl.insertArticleComment(new ArticleComment(0, "content "+String.valueOf(i) , String.valueOf(i), true, i));
 			}
 			//插入5条记录 时间为当前时间
 			for(int i=6;i<=10;i++) {
-				Timestamp timestamp=new Timestamp(System.currentTimeMillis());
-				articleCommentDaoImpl.insertArticleComment(new ArticleComment(0, "content "+String.valueOf(i),timestamp , String.valueOf(i), true, i));
+				articleCommentDaoImpl.insertArticleComment(new ArticleComment(0, "content "+String.valueOf(i), String.valueOf(i), true, i));
 			}
 			_list = articleCommentDaoImpl.selectArticleCommentAll();
 			printArticleCommentList(_list);
@@ -44,8 +41,7 @@ public class MySqlArticleCommentImplTest {
 			printArticleCommentList(_list);
 			
 			//更新id 3 的记录 ，结果应只变更iseffective
-			Timestamp _timestamp=new Timestamp(System.currentTimeMillis());
-			ArticleComment recordArticleComment =new ArticleComment(3, "context updated" , _timestamp, "updated", false, 99);
+			ArticleComment recordArticleComment =new ArticleComment(3, "context updated" , "updated", false, 99);
 			articleCommentDaoImpl.updateArticleComment(recordArticleComment);
 			_list = articleCommentDaoImpl.selectArticleCommentAll();
 			printArticleCommentList(_list);

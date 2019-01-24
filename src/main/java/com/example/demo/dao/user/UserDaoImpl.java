@@ -57,7 +57,7 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 
 	@Override
 	public User selectUserById(int recordId) throws Exception {
-		System.out.println("---------- 查询 id : "+recordId+" 用户信息 ----------");
+		System.out.println("---------- 查询 id : "+recordId+" 用户 ----------");
 		Connection conn = BaseDao.getConnection();
 		String sql = "select * from user_account where id = " + recordId;
 		PreparedStatement stmt = conn.prepareStatement(sql);
@@ -72,7 +72,7 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 			i++;
 		}
 		
-		System.out.println("---------- 查询到 "+ i +" 条用户信息 ---------");
+		System.out.println("---------- 查询到 "+ i +" 条用户 ---------");
 
 		BaseDao.closeAll(conn, stmt, rs);
 		return user;
@@ -80,7 +80,7 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 
 	@Override
 	public User selectUserByAccount(String recordAccount) throws Exception {
-		System.out.println("---------- 查询 account : "+recordAccount+" 用户信息 ----------");
+		System.out.println("---------- 查询 account : "+recordAccount+" 用户 ----------");
 		Connection conn = BaseDao.getConnection();
 		String sql = "select * from user_account where account = " + recordAccount;
 		PreparedStatement stmt = conn.prepareStatement(sql);
@@ -96,7 +96,7 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 			break;
 		}
 		
-		System.out.println("---------- 查询到 "+ i +" 条用户信息 ---------");
+		System.out.println("---------- 查询到 "+ i +" 条用户 ---------");
 
 		BaseDao.closeAll(conn, stmt, rs);
 		return user;
@@ -104,7 +104,7 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 
 	@Override
 	public List<User> selectUserByName(String recordName) throws Exception {
-		System.out.println("---------- 查询 name : "+recordName+" 用户信息 ----------");
+		System.out.println("---------- 查询 name : "+recordName+" 用户 ----------");
 		Connection conn = BaseDao.getConnection();
 		String sql = "select * from user_account where name = " + recordName;
 		PreparedStatement stmt = conn.prepareStatement(sql);
@@ -117,7 +117,7 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 					rs.getInt("role"));
 			list.add(user);
 		}
-		System.out.println("---------- 查询到 "+ list.size() +" 条用户信息 ---------");
+		System.out.println("---------- 查询到 "+ list.size() +" 条用户 ---------");
 
 		BaseDao.closeAll(conn, stmt, rs);
 		return list;
@@ -125,7 +125,7 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 
 	@Override
 	public List<User> selectUserByRole(int recordRole) throws Exception {
-		System.out.println("---------- 查询 role : "+recordRole+" 用户信息 ----------");
+		System.out.println("---------- 查询 role : "+recordRole+" 用户 ----------");
 		Connection conn = BaseDao.getConnection();
 		String sql = "select * from user_account where role = " + recordRole;
 		PreparedStatement stmt = conn.prepareStatement(sql);
@@ -138,7 +138,7 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 					rs.getInt("role"));
 			list.add(user);
 		}
-		System.out.println("---------- 查询到 "+ list.size() +" 条用户信息 ---------");
+		System.out.println("---------- 查询到 "+ list.size() +" 条用户 ---------");
 
 		BaseDao.closeAll(conn, stmt, rs);
 		return list;
@@ -146,7 +146,7 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 
 	@Override
 	public List<User> selectUserAll() throws Exception {
-		System.out.println("---------- 查询所有用户信息 ----------");
+		System.out.println("---------- 查询所有用户 ----------");
 		Connection conn = BaseDao.getConnection();
 		String sql = "select * from user_account";
 		PreparedStatement stmt = conn.prepareStatement(sql);
@@ -159,7 +159,7 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 					rs.getInt("role"));
 			list.add(user);
 		}
-		System.out.println("---------- 查询到 "+ list.size() +" 条用户信息 ---------");
+		System.out.println("---------- 查询到 "+ list.size() +" 条用户 ---------");
 
 		BaseDao.closeAll(conn, stmt, rs);
 		return list;
