@@ -153,10 +153,10 @@ public class ArticleInfoDaoImpl extends BaseDao implements ArticleInfoDao {
 	public List<ArticleInfo> selectArticleInfoByTitle(String recordTitle) throws Exception {
 		System.out.println("---------- 查询 title : " + recordTitle + " 文章信息 ----------");
 		Connection conn = BaseDao.getConnection();
-		String sql = "select * from article_info where find_in_set ( " + recordTitle + " , title )";
+		String sql = "select * from article_info where title like \"%\"?\"%\"";
 
 		PreparedStatement stmt = conn.prepareStatement(sql);
-
+		stmt.setString(1, recordTitle);
 		ResultSet rs = stmt.executeQuery();
 		
 		ArrayList<ArticleInfo> list=new ArrayList<ArticleInfo>();
@@ -178,10 +178,10 @@ public class ArticleInfoDaoImpl extends BaseDao implements ArticleInfoDao {
 	public List<ArticleInfo> selectArticleInfoBySummaryParts(String recordSummaryParts) throws Exception {
 		System.out.println("---------- 查询 summary : " + recordSummaryParts + " 文章信息 ----------");
 		Connection conn = BaseDao.getConnection();
-		String sql = "select * from article_info where find_in_set( " + recordSummaryParts + " , summary )";
+		String sql = "select * from article_info where summary like \"%\"?\"%\"";
 
 		PreparedStatement stmt = conn.prepareStatement(sql);
-
+		stmt.setString(1, recordSummaryParts);
 		ResultSet rs = stmt.executeQuery();
 		
 		ArrayList<ArticleInfo> list=new ArrayList<ArticleInfo>();

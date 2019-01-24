@@ -123,10 +123,10 @@ public class ArticleContentDaoImpl extends BaseDao implements ArticleContentDao 
 	public List<ArticleContent> selectArticleContentByContentParts(String recordContentParts) throws Exception {
 		System.out.println("---------- 查询 content_parts : " + recordContentParts + " 文章内容 ----------");
 		Connection conn = BaseDao.getConnection();
-		String sql = "select * from article_content where find_in_set ( " + recordContentParts + " , content )";
+		String sql = "select * from article_content where content like \"%\"?\"%\"";
 
 		PreparedStatement stmt = conn.prepareStatement(sql);
-
+		stmt.setString(1, recordContentParts);
 		ResultSet rs = stmt.executeQuery();
 
 		ArrayList<ArticleContent> list = new ArrayList<ArticleContent>();

@@ -1,6 +1,5 @@
 package com.example.demo.entity;
 
-import java.sql.Time;
 import java.sql.Timestamp;
 
 /**

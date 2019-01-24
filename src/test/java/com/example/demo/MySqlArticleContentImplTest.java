@@ -48,13 +48,13 @@ public class MySqlArticleContentImplTest {
 			printArticleContentList(_list);
 			
 			//查找测试...
-			_articleContent=articleContentDaoImpl.selectArticleContentByArticleInfoId(3);
+			_articleContent=articleContentDaoImpl.selectArticleContentByArticleInfoId(0);
 			printArticleContent(_articleContent);
 			
-			_articleContent=articleContentDaoImpl.selectArticleContentById(3);
+			_articleContent=articleContentDaoImpl.selectArticleContentById(0);
 			printArticleContent(_articleContent);
 
-			_list=articleContentDaoImpl.selectArticleContentByContentParts("content");
+			_list=articleContentDaoImpl.selectArticleContentByContentParts("cos");
 			printArticleContentList(_list);
 			
 		} catch (Exception e) {

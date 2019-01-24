@@ -116,9 +116,9 @@ public class ArticleCommentDaoImpl extends BaseDao implements ArticleCommentDao 
 	public List<ArticleComment> selectArticleCommentByContentParts(String recordContentParts) throws Exception {
 		System.out.println("---------- 查询 文本包含 : " + recordContentParts + " 文章评论 ----------");
 		Connection conn = BaseDao.getConnection();
-		String sql = "select * from article_comment where find_in_set ( " + recordContentParts + " , content )";
+		String sql = "select * from article_comment where content like \"%\"?\"%\"";
 		PreparedStatement stmt = conn.prepareStatement(sql);
-
+		stmt.setString(1, recordContentParts);
 		ResultSet rs = stmt.executeQuery();
 
 		ArrayList<ArticleComment> list = new ArrayList<ArticleComment>();

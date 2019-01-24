@@ -53,7 +53,7 @@ public class MySqlArticleCommentImplTest {
 			_articleComment=articleCommentDaoImpl.selectArticleCommentById(3);
 			printArticleComment(_articleComment);
 
-			_list=articleCommentDaoImpl.selectArticleCommentByContentParts("content");
+			_list=articleCommentDaoImpl.selectArticleCommentByContentParts("cons");
 			printArticleCommentList(_list);
 			
 			_list=articleCommentDaoImpl.selectArticleCommentByIsEffective(false);

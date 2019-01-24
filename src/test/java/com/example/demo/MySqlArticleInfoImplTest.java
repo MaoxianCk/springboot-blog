@@ -43,7 +43,6 @@ public class MySqlArticleInfoImplTest {
 			printArticleInfoList(_list);
 
 			// 更新id 3 的记录
-			Thread.sleep(3000);
 			ArticleInfo recordArticleInfo = new ArticleInfo(3, "title updated", "summary updated", false, 99, 99);
 			articleInfoDaoImpl.updateArticleInfo(recordArticleInfo);
 			_list = articleInfoDaoImpl.selectArticleInfoAll();
@@ -59,10 +58,10 @@ public class MySqlArticleInfoImplTest {
 			_articleInfo = articleInfoDaoImpl.selectArticleInfoByArticleContentId(3);
 			printArticleInfo(_articleInfo);
 
-			_list = articleInfoDaoImpl.selectArticleInfoByTitle("title");
+			_list = articleInfoDaoImpl.selectArticleInfoByTitle("up");
 			printArticleInfoList(_list);
 			
-			_list = articleInfoDaoImpl.selectArticleInfoBySummaryParts("summary");
+			_list = articleInfoDaoImpl.selectArticleInfoBySummaryParts("up");
 			printArticleInfoList(_list);
 
 			_list = articleInfoDaoImpl.selectArticleInfoByIsTop(false);
