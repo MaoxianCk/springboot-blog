@@ -1,2 +1,3 @@
-springboot blog
-2019-1-21 18:07:40
+springboot blog  
+创建于2019-1-21 18:07:40  
+使用springboot+mysql...搭建个人博客...  
