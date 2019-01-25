@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.dao;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ import com.example.demo.entity.ArticleComment;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class MySqlArticleCommentImplTest {
+public class MySqlArticleCommentDaoImplTest {
 	@Test
 	public void funtionTest() {
 		ArticleCommentDaoImpl articleCommentDaoImpl = new ArticleCommentDaoImpl();

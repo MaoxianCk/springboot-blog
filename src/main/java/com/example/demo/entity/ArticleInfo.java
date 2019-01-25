@@ -1,6 +1,9 @@
 package com.example.demo.entity;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  * 文章表 article_info表 实体类
@@ -23,11 +26,12 @@ public class ArticleInfo {
 	private Timestamp modifiedTime;
 	// 该文章对应的文章内容表id号
 	private int articleId;
+
 	// 该文章对应的文章评论表id号
-	private int articleCommentId;
+	private List<Integer> articleCommentIdList;
 
 	public ArticleInfo(int id, String title, String summary, boolean isTop, Timestamp createTime,
-			Timestamp modifiedTime, int articleId, int articleCommentId) {
+			Timestamp modifiedTime, int articleId) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -36,10 +40,10 @@ public class ArticleInfo {
 		this.createTime = createTime;
 		this.modifiedTime = modifiedTime;
 		this.articleId = articleId;
-		this.articleCommentId = articleCommentId;
+		this.articleCommentIdList=new ArrayList<Integer>();
 	}
 
-	public ArticleInfo(int id, String title, String summary, boolean isTop, int articleId, int articleCommentId) {
+	public ArticleInfo(int id, String title, String summary, boolean isTop, int articleId) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -51,13 +55,13 @@ public class ArticleInfo {
 		this.modifiedTime = timestamp;
 
 		this.articleId = articleId;
-		this.articleCommentId = articleCommentId;
+		this.articleCommentIdList = new ArrayList<Integer>();
 	}
 
 	public void printArticleInfo() {
 		System.out.println("id:" + getId() + "\ttitle:" + getTitle() + "\tsummary:" + getSummary() + "\tisTop:"
 				+ getIsTop() + "\tcreatetime:" + getCreateTime() + "\tmodifiedTime:" + getModifiedTime()
-				+ "\tarticleId:" + getArticleId() + "\tarticleCommentId:" + getArticleCommentId());
+				+ "\tarticleId:" + getArticleId() + "\tarticleCommentId:" + String.valueOf(articleCommentIdList));
 	}
 
 	public int getId() {
@@ -116,12 +120,14 @@ public class ArticleInfo {
 		this.articleId = articleId;
 	}
 
-	public int getArticleCommentId() {
-		return articleCommentId;
+	@Deprecated
+	public List<Integer> getArticleCommentIdList() {
+		return articleCommentIdList;
 	}
 
-	public void setArticleCommentId(int articleCommentId) {
-		this.articleCommentId = articleCommentId;
+	@Deprecated
+	public void addArticleCommentId(int articleCommentId) {
+		this.articleCommentIdList.add(articleCommentId);
 	}
 
 }

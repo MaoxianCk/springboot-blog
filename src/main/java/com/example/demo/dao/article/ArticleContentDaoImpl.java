@@ -68,6 +68,27 @@ public class ArticleContentDaoImpl extends BaseDao implements ArticleContentDao 
 		BaseDao.closeAll(conn, stmt, null);
 		return i;
 	}
+	
+	@Override
+	public int deleteArticleContentByArticleInfoId(int recordArticleInfoId) throws Exception {
+		Connection conn = BaseDao.getConnection();
+		PreparedStatement stmt = null;
+		String sql = "delete from article_content where article_info_id = ?";
+
+		int i = -1;
+
+		try {
+			stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, recordArticleInfoId);
+			i = stmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("---------- 删除文章内容错误 ----------");
+		}
+
+		BaseDao.closeAll(conn, stmt, null);
+		return i;
+	}
 
 	@Override
 	public ArticleContent selectArticleContentById(int recordId) throws Exception {

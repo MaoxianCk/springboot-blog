@@ -16,7 +16,7 @@ public class ArticleInfoDaoImpl extends BaseDao implements ArticleInfoDao {
 	public int insertArticleInfo(ArticleInfo recordArticleInfo) throws Exception {
 		Connection conn = BaseDao.getConnection();
 		PreparedStatement stmt = null;
-		String sql = "insert into article_info (title,summary,is_top,create_time,modified_time,article_id,comment_id) values(?,?,?,?,?,?,?)";
+		String sql = "insert into article_info (title,summary,is_top,create_time,modified_time,article_id) values(?,?,?,?,?,?)";
 
 		int i = -1;
 
@@ -40,7 +40,6 @@ public class ArticleInfoDaoImpl extends BaseDao implements ArticleInfoDao {
 			}
 
 			stmt.setInt(6, recordArticleInfo.getArticleId());
-			stmt.setInt(7, recordArticleInfo.getArticleCommentId());
 
 			i = stmt.executeUpdate();
 		} catch (Exception e) {
@@ -86,7 +85,7 @@ public class ArticleInfoDaoImpl extends BaseDao implements ArticleInfoDao {
 		int i = 0;
 		while (rs.next()) {
 			articleInfo = new ArticleInfo(rs.getInt("id"), rs.getString("title"), rs.getString("summary"),
-					rs.getBoolean("is_top"), rs.getInt("article_id"), rs.getInt("comment_id"));
+					rs.getBoolean("is_top"), rs.getInt("article_id"));
 			i++;
 			break;
 		}
@@ -112,7 +111,7 @@ public class ArticleInfoDaoImpl extends BaseDao implements ArticleInfoDao {
 		while (rs.next()) {
 			articleInfo = new ArticleInfo(rs.getInt("id"), rs.getString("title"), rs.getString("summary"),
 					rs.getBoolean("is_top"), rs.getTimestamp("create_time"), rs.getTimestamp("modified_time"),
-					rs.getInt("article_id"), rs.getInt("comment_id"));
+					rs.getInt("article_id"));
 			i++;
 			break;
 		}
@@ -138,7 +137,7 @@ public class ArticleInfoDaoImpl extends BaseDao implements ArticleInfoDao {
 		while (rs.next()) {
 			articleInfo = new ArticleInfo(rs.getInt("id"), rs.getString("title"), rs.getString("summary"),
 					rs.getBoolean("is_top"), rs.getTimestamp("create_time"), rs.getTimestamp("modified_time"),
-					rs.getInt("article_id"), rs.getInt("comment_id"));
+					rs.getInt("article_id"));
 			i++;
 			break;
 		}
@@ -164,7 +163,7 @@ public class ArticleInfoDaoImpl extends BaseDao implements ArticleInfoDao {
 		while (rs.next()) {
 			ArticleInfo articleInfo = new ArticleInfo(rs.getInt("id"), rs.getString("title"), rs.getString("summary"),
 					rs.getBoolean("is_top"), rs.getTimestamp("create_time"), rs.getTimestamp("modified_time"),
-					rs.getInt("article_id"), rs.getInt("comment_id"));
+					rs.getInt("article_id"));
 			list.add(articleInfo);
 		}
 
@@ -189,7 +188,7 @@ public class ArticleInfoDaoImpl extends BaseDao implements ArticleInfoDao {
 		while (rs.next()) {
 			ArticleInfo articleInfo = new ArticleInfo(rs.getInt("id"), rs.getString("title"), rs.getString("summary"),
 					rs.getBoolean("is_top"), rs.getTimestamp("create_time"), rs.getTimestamp("modified_time"),
-					rs.getInt("article_id"), rs.getInt("comment_id"));
+					rs.getInt("article_id"));
 			list.add(articleInfo);
 		}
 
@@ -214,7 +213,7 @@ public class ArticleInfoDaoImpl extends BaseDao implements ArticleInfoDao {
 		while (rs.next()) {
 			ArticleInfo articleInfo = new ArticleInfo(rs.getInt("id"), rs.getString("title"), rs.getString("summary"),
 					rs.getBoolean("is_top"), rs.getTimestamp("create_time"), rs.getTimestamp("modified_time"),
-					rs.getInt("article_id"), rs.getInt("comment_id"));
+					rs.getInt("article_id"));
 			list.add(articleInfo);
 		}
 
@@ -239,7 +238,7 @@ public class ArticleInfoDaoImpl extends BaseDao implements ArticleInfoDao {
 		while (rs.next()) {
 			ArticleInfo articleInfo = new ArticleInfo(rs.getInt("id"), rs.getString("title"), rs.getString("summary"),
 					rs.getBoolean("is_top"), rs.getTimestamp("create_time"), rs.getTimestamp("modified_time"),
-					rs.getInt("article_id"), rs.getInt("comment_id"));
+					rs.getInt("article_id"));
 			list.add(articleInfo);
 		}
 

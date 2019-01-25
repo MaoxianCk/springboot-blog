@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.dao;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ import com.example.demo.entity.ArticleInfo;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class MySqlArticleInfoImplTest {
+public class MySqlArticleInfoDaoImplTest {
 	@Test
 	public void funtionTest() {
 		ArticleInfoDaoImpl articleInfoDaoImpl = new ArticleInfoDaoImpl();

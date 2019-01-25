@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.dao;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -13,7 +13,7 @@ import com.example.demo.entity.ArticleContent;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class MySqlArticleContentImplTest {
+public class MySqlArticleContentDaoImplTest {
 	@Test
 	public void funtionTest() {
 		ArticleContentDaoImpl articleContentDaoImpl = new ArticleContentDaoImpl();

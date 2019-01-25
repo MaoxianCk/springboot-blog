@@ -8,9 +8,10 @@ public interface ArticleCommentDao {
 	public int insertArticleComment(ArticleComment recordArticleComment) throws Exception;
 	
 	public int deleteArticleCommentById(int recordId) throws Exception;
+	public int deleteArticleCommentByArticleInfoId(int recordArticleInfoId) throws Exception;
 	
 	public ArticleComment selectArticleCommentById(int recordId) throws Exception;
-	public ArticleComment selectArticleCommentByArticleInfoId(int recordArticleInfoId) throws Exception;
+	public List<ArticleComment> selectArticleCommentByArticleInfoId(int recordArticleInfoId) throws Exception;
 	public List<ArticleComment> selectArticleCommentByContentParts(String recordContentParts) throws Exception;
 	public List<ArticleComment> selectArticleCommentByName(String recordName) throws Exception;
 	public List<ArticleComment> selectArticleCommentByIsEffective(boolean recordIsEffective) throws Exception;

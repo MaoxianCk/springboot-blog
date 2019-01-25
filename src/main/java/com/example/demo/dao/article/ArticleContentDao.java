@@ -8,6 +8,7 @@ public interface ArticleContentDao {
 	public int insertArticleContent(ArticleContent recordArticleContent) throws Exception;
 	
 	public int deleteArticleContentById(int recordId) throws Exception;
+	public int deleteArticleContentByArticleInfoId(int recordArticleInfoId) throws Exception;
 	
 	public ArticleContent selectArticleContentById(int recordId) throws Exception;
 	public ArticleContent selectArticleContentByArticleInfoId(int recordArticleInfoId) throws Exception;

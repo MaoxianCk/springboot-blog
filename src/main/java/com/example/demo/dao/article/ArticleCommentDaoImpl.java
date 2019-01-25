@@ -61,6 +61,26 @@ public class ArticleCommentDaoImpl extends BaseDao implements ArticleCommentDao 
 		BaseDao.closeAll(conn, stmt, null);
 		return i;
 	}
+	
+	@Override
+	public int deleteArticleCommentByArticleInfoId(int recordArticleInfoId) throws Exception {
+		Connection conn = BaseDao.getConnection();
+		PreparedStatement stmt = null;
+		String sql = "delete from article_comment where article_info_id = ?";
+		int i = -1;
+
+		try {
+			stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, recordArticleInfoId);
+			i = stmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("---------- 删除文章评论错误 ----------");
+		}
+
+		BaseDao.closeAll(conn, stmt, null);
+		return i;
+	}
 
 	@Override
 	public ArticleComment selectArticleCommentById(int recordId) throws Exception {
@@ -88,7 +108,7 @@ public class ArticleCommentDaoImpl extends BaseDao implements ArticleCommentDao 
 	}
 
 	@Override
-	public ArticleComment selectArticleCommentByArticleInfoId(int recordArticleInfoId) throws Exception {
+	public List<ArticleComment> selectArticleCommentByArticleInfoId(int recordArticleInfoId) throws Exception {
 		System.out.println("---------- 查询 article_info_id : " + recordArticleInfoId + " 文章评论 ----------");
 		Connection conn = BaseDao.getConnection();
 		String sql = "select * from article_comment where article_info_id = " + recordArticleInfoId;
@@ -96,20 +116,19 @@ public class ArticleCommentDaoImpl extends BaseDao implements ArticleCommentDao 
 
 		ResultSet rs = stmt.executeQuery();
 
-		ArticleComment articleComment = null;
-		int i = 0;
+		ArrayList<ArticleComment> list=new ArrayList<ArticleComment>();
+
 		while (rs.next()) {
-			articleComment = new ArticleComment(rs.getInt("id"), rs.getString("content"),
+			ArticleComment articleComment = new ArticleComment(rs.getInt("id"), rs.getString("content"),
 					rs.getTimestamp("create_time"), rs.getString("name"), rs.getBoolean("is_effective"),
 					rs.getInt("article_info_id"));
-			i++;
-			break;
+			list.add(articleComment);
 		}
 
-		System.out.println("---------- 查询到 " + i + " 条文章评论 ---------");
+		System.out.println("---------- 查询到 " + list.size() + " 条文章评论 ---------");
 
 		BaseDao.closeAll(conn, stmt, rs);
-		return articleComment;
+		return list;
 	}
 
 	@Override
