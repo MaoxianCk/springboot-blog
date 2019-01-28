@@ -7,17 +7,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Maoxian</title>
 
-    <!-- 引入 JQ 和 Bootstrap -->
-    <script src="lib/jQuery/jQuery.js"></script>
+    <!-- 引入Bootstrap -->
     <link href="lib/bootstrap\css\bootstrap.min.css" rel="stylesheet">
-    <script src="lib/bootstrap\js\bootstrap.js"></script>
     <!--引入自己的CSS-->
     <link href="css/mycss.css" rel="stylesheet">
     <link href="css/header.css" rel="stylesheet">
     <link href="css/footer.css" rel="stylesheet">
-
-    <!--引入自己的JS-->
-    <script src="js/myjs.js"></script>
+    <link href="css/article.css" rel="stylesheet">
 
 </head>
 
@@ -28,7 +24,6 @@
 
     <!--中部主体-->
     <div class="center-block" style="width: 60%;">
-        <p>articles</p>
         <div id="content">
             <!--返回按钮-->
             <div id="backBtn">
@@ -37,26 +32,27 @@
 
             <!--文章标题-->
             <div>
-                <h1 id="articleTitle">这里是文章的标题</h1>
+                <h1 id="articleTitle"></h1>
             </div>
             <!--文章创建时间-->
             <div>
-                <h5 id="articleCreateBy">时间：这里是文章创建时间</h5>
-            </div>
-            <!--文章题图-->
-            <div class="articlePicture">
-                <img id="articlePicture" src="" />
+                <h5 id="articleCreateTime"></h5>
             </div>
             <!--文章内容-->
-            <div id="articleContent" style="clear: both;">
-
-            </div>
+            <div id="articleContent" style="clear: both;"></div>
 
             <!--评论列表-->
             <div style="margin-top: 60px;">
                 <label>评论列表：</label>
             </div>
-            <div id="commentList" class="commentList">
+            <div id="articleComments">
+                <template id="articleComment">
+                    <div class="articleComment">
+                        <span id="commentName"></span>
+                        <span id="commentCreatTime"></span>
+                        <div id="commentContent"></div>
+                    </div>
+                </template>
             </div>
 
             <!--新增评论评论-->
@@ -67,15 +63,13 @@
                     </div>
                     <div class="panel-body">
                         <label>名称：</label>
-                        <input id="commentName" class="form-control" />
-                        <label>Email：</label>
-                        <input id="commentEmail" class="form-control">
+                        <input id="newCommentName" class="form-control" />
                         <label>评论内容：</label>
-                        <textarea id="commentContent" rows="3" class="form-control"></textarea><br />
+                        <textarea id="newCommentContent" rows="3" class="form-control"></textarea>
+                        <br />
                         <div class="text-right">
                             <button id="addComment" class="btn btn-success">确认添加</button>
                         </div>
-
                     </div>
                 </div>
                 <!-- /. END PANEL -->
@@ -94,7 +88,7 @@
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <label>名称和评论内容不能为空！同时希望您能留下您宝贵的Email地址供我们联系！</label>
+                                    <label>名称和评论内容不能为空！</label>
                                 </div>
                             </div>
                             <!-- /. END RWO -->
@@ -141,6 +135,10 @@
     <div class="footerpage"></div>
     <!--footer over-->
 </body>
+<script src="lib/jQuery/jQuery.js"></script>
+<script src="lib/bootstrap\js\bootstrap.js"></script>
+<script src="js/myjs.js"></script>
+<script src="js/article.js"></script>
 <script>
     $(function() {
         $(".headerpage").load("header.html");

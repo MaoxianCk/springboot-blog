@@ -16,7 +16,7 @@ public class ArticleCommentDaoImpl extends BaseDao implements ArticleCommentDao 
 	public int insertArticleComment(ArticleComment recordArticleComment) throws Exception {
 		Connection conn = BaseDao.getConnection();
 		PreparedStatement stmt = null;
-		String sql = "insert into article_comment(content,create_time,name,is_effective,article_info_id) values(?,?,?,?,?)";
+		String sql = "insert into article_comment(content,create_time,name,article_info_id) values(?,?,?,?)";
 		int i = -1;
 
 		try {
@@ -30,8 +30,8 @@ public class ArticleCommentDaoImpl extends BaseDao implements ArticleCommentDao 
 			}
 			
 			stmt.setString(3, recordArticleComment.getName());
-			stmt.setBoolean(4, recordArticleComment.getIsEffective());
-			stmt.setInt(5, recordArticleComment.getArticleInfoId());
+			
+			stmt.setInt(4, recordArticleComment.getArticleInfoId());
 			i = stmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -84,7 +84,7 @@ public class ArticleCommentDaoImpl extends BaseDao implements ArticleCommentDao 
 
 	@Override
 	public ArticleComment selectArticleCommentById(int recordId) throws Exception {
-		System.out.println("---------- 查询 id : " + recordId + " 文章评论 ----------");
+		//System.out.println("---------- 查询 id : " + recordId + " 文章评论 ----------");
 		Connection conn = BaseDao.getConnection();
 		String sql = "select * from article_comment where id = " + recordId;
 		PreparedStatement stmt = conn.prepareStatement(sql);
@@ -92,16 +92,16 @@ public class ArticleCommentDaoImpl extends BaseDao implements ArticleCommentDao 
 		ResultSet rs = stmt.executeQuery();
 
 		ArticleComment articleComment = null;
-		int i = 0;
+		//int i = 0;
 		while (rs.next()) {
 			articleComment = new ArticleComment(rs.getInt("id"), rs.getString("content"),
 					rs.getTimestamp("create_time"), rs.getString("name"), rs.getBoolean("is_effective"),
 					rs.getInt("article_info_id"));
-			i++;
+		//	i++;
 			break;
 		}
 
-		System.out.println("---------- 查询到 " + i + " 条文章评论 ---------");
+		//System.out.println("---------- 查询到 " + i + " 条文章评论 ---------");
 
 		BaseDao.closeAll(conn, stmt, rs);
 		return articleComment;
@@ -109,7 +109,7 @@ public class ArticleCommentDaoImpl extends BaseDao implements ArticleCommentDao 
 
 	@Override
 	public List<ArticleComment> selectArticleCommentByArticleInfoId(int recordArticleInfoId) throws Exception {
-		System.out.println("---------- 查询 article_info_id : " + recordArticleInfoId + " 文章评论 ----------");
+		//System.out.println("---------- 查询 article_info_id : " + recordArticleInfoId + " 文章评论 ----------");
 		Connection conn = BaseDao.getConnection();
 		String sql = "select * from article_comment where article_info_id = " + recordArticleInfoId;
 		PreparedStatement stmt = conn.prepareStatement(sql);
@@ -125,7 +125,7 @@ public class ArticleCommentDaoImpl extends BaseDao implements ArticleCommentDao 
 			list.add(articleComment);
 		}
 
-		System.out.println("---------- 查询到 " + list.size() + " 条文章评论 ---------");
+		//System.out.println("---------- 查询到 " + list.size() + " 条文章评论 ---------");
 
 		BaseDao.closeAll(conn, stmt, rs);
 		return list;
@@ -133,7 +133,7 @@ public class ArticleCommentDaoImpl extends BaseDao implements ArticleCommentDao 
 
 	@Override
 	public List<ArticleComment> selectArticleCommentByContentParts(String recordContentParts) throws Exception {
-		System.out.println("---------- 查询 文本包含 : " + recordContentParts + " 文章评论 ----------");
+		//System.out.println("---------- 查询 文本包含 : " + recordContentParts + " 文章评论 ----------");
 		Connection conn = BaseDao.getConnection();
 		String sql = "select * from article_comment where content like \"%\"?\"%\"";
 		PreparedStatement stmt = conn.prepareStatement(sql);
@@ -147,7 +147,7 @@ public class ArticleCommentDaoImpl extends BaseDao implements ArticleCommentDao 
 					rs.getInt("article_info_id"));
 			list.add(articleComment);
 		}
-		System.out.println("---------- 查询到 " + list.size() + " 条文章评论 ---------");
+		//System.out.println("---------- 查询到 " + list.size() + " 条文章评论 ---------");
 
 		BaseDao.closeAll(conn, stmt, rs);
 		return list;
@@ -155,7 +155,7 @@ public class ArticleCommentDaoImpl extends BaseDao implements ArticleCommentDao 
 
 	@Override
 	public List<ArticleComment> selectArticleCommentByName(String recordName) throws Exception {
-		System.out.println("---------- 查询 name : " + recordName + " 文章评论 ----------");
+		//System.out.println("---------- 查询 name : " + recordName + " 文章评论 ----------");
 		Connection conn = BaseDao.getConnection();
 		String sql = "select * from article_comment where name = " + recordName;
 		PreparedStatement stmt = conn.prepareStatement(sql);
@@ -169,7 +169,7 @@ public class ArticleCommentDaoImpl extends BaseDao implements ArticleCommentDao 
 					rs.getInt("article_info_id"));
 			list.add(articleComment);
 		}
-		System.out.println("---------- 查询到 " + list.size() + " 条文章评论 ---------");
+		//System.out.println("---------- 查询到 " + list.size() + " 条文章评论 ---------");
 
 		BaseDao.closeAll(conn, stmt, rs);
 		return list;
@@ -177,7 +177,7 @@ public class ArticleCommentDaoImpl extends BaseDao implements ArticleCommentDao 
 
 	@Override
 	public List<ArticleComment> selectArticleCommentByIsEffective(boolean recordIsEffective) throws Exception {
-		System.out.println("---------- 查询 isEffctive : " + recordIsEffective + " 文章评论 ----------");
+		//System.out.println("---------- 查询 isEffctive : " + recordIsEffective + " 文章评论 ----------");
 		Connection conn = BaseDao.getConnection();
 		String sql = "select * from article_comment where is_effective = " + recordIsEffective;
 		PreparedStatement stmt = conn.prepareStatement(sql);
@@ -191,7 +191,7 @@ public class ArticleCommentDaoImpl extends BaseDao implements ArticleCommentDao 
 					rs.getInt("article_info_id"));
 			list.add(articleComment);
 		}
-		System.out.println("---------- 查询到 " + list.size() + " 条文章评论 ---------");
+		//System.out.println("---------- 查询到 " + list.size() + " 条文章评论 ---------");
 
 		BaseDao.closeAll(conn, stmt, rs);
 		return list;
@@ -199,7 +199,7 @@ public class ArticleCommentDaoImpl extends BaseDao implements ArticleCommentDao 
 
 	@Override
 	public List<ArticleComment> selectArticleCommentAll() throws Exception {
-		System.out.println("---------- 查询所有文章评论 ----------");
+		//System.out.println("---------- 查询所有文章评论 ----------");
 		Connection conn = BaseDao.getConnection();
 		String sql = "select * from article_comment";
 		PreparedStatement stmt = conn.prepareStatement(sql);
@@ -213,7 +213,7 @@ public class ArticleCommentDaoImpl extends BaseDao implements ArticleCommentDao 
 					rs.getInt("article_info_id"));
 			list.add(articleComment);
 		}
-		System.out.println("---------- 查询到 " + list.size() + " 条文章评论 ---------");
+		//System.out.println("---------- 查询到 " + list.size() + " 条文章评论 ---------");
 
 		BaseDao.closeAll(conn, stmt, rs);
 		return list;

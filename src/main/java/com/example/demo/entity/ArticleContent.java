@@ -2,6 +2,8 @@ package com.example.demo.entity;
 
 import java.sql.Timestamp;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 /**
  * 文章内容表 article_content表 实体类
  * 
@@ -59,6 +61,7 @@ public class ArticleContent {
 		this.content = content;
 	}
 
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
 	public Timestamp getCreateTime() {
 		return createTime;
 	}
@@ -67,6 +70,7 @@ public class ArticleContent {
 		this.createTime = createTime;
 	}
 
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
 	public Timestamp getModifiedTime() {
 		return modifiedTime;
 	}

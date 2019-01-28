@@ -2,6 +2,8 @@ package com.example.demo.entity;
 
 import java.sql.Timestamp;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 /**
  * 文章评论表 article_comment表 实体类
  * 
@@ -11,12 +13,12 @@ import java.sql.Timestamp;
 public class ArticleComment {
 	// 文章评论id
 	private int id;
+	// 评论者昵称
+	private String name;
 	// 评论内容
 	private String content;
 	// 评论时期
 	private Timestamp createTime;
-	// 评论者昵称
-	private String name;
 	// 该评论是否有效
 	private boolean isEffective;
 	// 该文章评论对应的文章表id号
@@ -43,6 +45,17 @@ public class ArticleComment {
 		this.isEffective = isEffective;
 		this.articleInfoId = articleInfoId;
 	}
+	
+	public ArticleComment(String name,String content) {
+		this.id = 0;
+		this.content = content;
+		this.createTime = new Timestamp(System.currentTimeMillis());
+		this.name = name;
+		this.isEffective = false;
+		this.articleInfoId = 0;
+	}
+	
+	public ArticleComment() {}
 
 	public void printArticleCommentInfo() {
 		System.out.println("id:" + getId() + "\tcontent:" + getContent() + "\tcreateTime:" + getCreateTime() + "\tname:"
@@ -65,6 +78,7 @@ public class ArticleComment {
 		this.content = content;
 	}
 
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
 	public Timestamp getCreateTime() {
 
 		return createTime;

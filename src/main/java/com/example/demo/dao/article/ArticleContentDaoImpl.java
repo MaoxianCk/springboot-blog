@@ -92,7 +92,7 @@ public class ArticleContentDaoImpl extends BaseDao implements ArticleContentDao 
 
 	@Override
 	public ArticleContent selectArticleContentById(int recordId) throws Exception {
-		System.out.println("---------- 查询 id : " + recordId + " 文章内容 ----------");
+		//System.out.println("---------- 查询 id : " + recordId + " 文章内容 ----------");
 		Connection conn = BaseDao.getConnection();
 		String sql = "select * from article_content where id = " + recordId;
 
@@ -101,15 +101,15 @@ public class ArticleContentDaoImpl extends BaseDao implements ArticleContentDao 
 		ResultSet rs = stmt.executeQuery();
 
 		ArticleContent articleContent = null;
-		int i = 0;
+		//int i = 0;
 		while (rs.next()) {
 			articleContent = new ArticleContent(rs.getInt("id"), rs.getString("content"),
 					rs.getTimestamp("create_time"), rs.getTimestamp("modified_time"), rs.getInt("article_info_id"));
-			i++;
+		//	i++;
 			break;
 		}
 
-		System.out.println("---------- 查询到 " + i + " 条文章内容 ---------");
+		//System.out.println("---------- 查询到 " + i + " 条文章内容 ---------");
 
 		BaseDao.closeAll(conn, stmt, rs);
 		return articleContent;
@@ -117,7 +117,7 @@ public class ArticleContentDaoImpl extends BaseDao implements ArticleContentDao 
 
 	@Override
 	public ArticleContent selectArticleContentByArticleInfoId(int recordArticleInfoId) throws Exception {
-		System.out.println("---------- 查询 article_info_id : " + recordArticleInfoId + " 文章内容 ----------");
+		//System.out.println("---------- 查询 article_info_id : " + recordArticleInfoId + " 文章内容 ----------");
 		Connection conn = BaseDao.getConnection();
 		String sql = "select * from article_content where article_info_id = " + recordArticleInfoId;
 
@@ -126,15 +126,15 @@ public class ArticleContentDaoImpl extends BaseDao implements ArticleContentDao 
 		ResultSet rs = stmt.executeQuery();
 
 		ArticleContent articleContent = null;
-		int i = 0;
+		//int i = 0;
 		while (rs.next()) {
 			articleContent = new ArticleContent(rs.getInt("id"), rs.getString("content"),
 					rs.getTimestamp("create_time"), rs.getTimestamp("modified_time"), rs.getInt("article_info_id"));
-			i++;
+		//	i++;
 			break;
 		}
 
-		System.out.println("---------- 查询到 " + i + " 条文章内容 ---------");
+		//System.out.println("---------- 查询到 " + i + " 条文章内容 ---------");
 
 		BaseDao.closeAll(conn, stmt, rs);
 		return articleContent;
@@ -142,7 +142,7 @@ public class ArticleContentDaoImpl extends BaseDao implements ArticleContentDao 
 
 	@Override
 	public List<ArticleContent> selectArticleContentByContentParts(String recordContentParts) throws Exception {
-		System.out.println("---------- 查询 content_parts : " + recordContentParts + " 文章内容 ----------");
+		//System.out.println("---------- 查询 content_parts : " + recordContentParts + " 文章内容 ----------");
 		Connection conn = BaseDao.getConnection();
 		String sql = "select * from article_content where content like \"%\"?\"%\"";
 
@@ -157,7 +157,7 @@ public class ArticleContentDaoImpl extends BaseDao implements ArticleContentDao 
 			list.add(articleContent);
 		}
 
-		System.out.println("---------- 查询到 " + list.size() + " 条文章内容 ---------");
+		//System.out.println("---------- 查询到 " + list.size() + " 条文章内容 ---------");
 
 		BaseDao.closeAll(conn, stmt, rs);
 		return list;
@@ -165,7 +165,7 @@ public class ArticleContentDaoImpl extends BaseDao implements ArticleContentDao 
 
 	@Override
 	public List<ArticleContent> selectArticleContentAll() throws Exception {
-		System.out.println("---------- 查询所有文章内容 ----------");
+		//System.out.println("---------- 查询所有文章内容 ----------");
 		Connection conn = BaseDao.getConnection();
 		String sql = "select * from article_content";
 
@@ -180,7 +180,7 @@ public class ArticleContentDaoImpl extends BaseDao implements ArticleContentDao 
 			list.add(articleContent);
 		}
 
-		System.out.println("---------- 查询到 " + list.size() + " 条文章内容 ---------");
+		//System.out.println("---------- 查询到 " + list.size() + " 条文章内容 ---------");
 
 		BaseDao.closeAll(conn, stmt, rs);
 		return list;

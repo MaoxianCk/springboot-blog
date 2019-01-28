@@ -82,15 +82,15 @@ public class ArticleInfoDaoImpl extends BaseDao implements ArticleInfoDao {
 		ResultSet rs = stmt.executeQuery();
 
 		ArticleInfo articleInfo = null;
-		int i = 0;
+		//int i = 0;
 		while (rs.next()) {
 			articleInfo = new ArticleInfo(rs.getInt("id"), rs.getString("title"), rs.getString("summary"),
 					rs.getBoolean("is_top"), rs.getInt("article_id"));
-			i++;
+		//	i++;
 			break;
 		}
 
-		System.out.println("---------- 查询到 " + i + " 条文章信息 ---------");
+		//System.out.println("---------- 查询到 " + i + " 条文章信息 ---------");
 
 		BaseDao.closeAll(conn, stmt, rs);
 		return articleInfo;
@@ -107,16 +107,16 @@ public class ArticleInfoDaoImpl extends BaseDao implements ArticleInfoDao {
 		ResultSet rs = stmt.executeQuery();
 
 		ArticleInfo articleInfo = null;
-		int i = 0;
+		//int i = 0;
 		while (rs.next()) {
 			articleInfo = new ArticleInfo(rs.getInt("id"), rs.getString("title"), rs.getString("summary"),
 					rs.getBoolean("is_top"), rs.getTimestamp("create_time"), rs.getTimestamp("modified_time"),
 					rs.getInt("article_id"));
-			i++;
+		//	i++;
 			break;
 		}
 
-		System.out.println("---------- 查询到 " + i + " 条文章信息 ---------");
+		//System.out.println("---------- 查询到 " + i + " 条文章信息 ---------");
 
 		BaseDao.closeAll(conn, stmt, rs);
 		return articleInfo;
@@ -141,7 +141,7 @@ public class ArticleInfoDaoImpl extends BaseDao implements ArticleInfoDao {
 			list.add(articleInfo);
 		}
 
-		System.out.println("---------- 查询到 " + list.size() + " 条文章信息 ---------");
+		//System.out.println("---------- 查询到 " + list.size() + " 条文章信息 ---------");
 
 		BaseDao.closeAll(conn, stmt, rs);
 		return list;
@@ -166,7 +166,7 @@ public class ArticleInfoDaoImpl extends BaseDao implements ArticleInfoDao {
 			list.add(articleInfo);
 		}
 
-		System.out.println("---------- 查询到 " + list.size() + " 条文章信息 ---------");
+		//System.out.println("---------- 查询到 " + list.size() + " 条文章信息 ---------");
 
 		BaseDao.closeAll(conn, stmt, rs);
 		return list;
@@ -191,7 +191,7 @@ public class ArticleInfoDaoImpl extends BaseDao implements ArticleInfoDao {
 			list.add(articleInfo);
 		}
 
-		System.out.println("---------- 查询到 " + list.size() + " 条文章信息 ---------");
+		//System.out.println("---------- 查询到 " + list.size() + " 条文章信息 ---------");
 
 		BaseDao.closeAll(conn, stmt, rs);
 		return list;
@@ -216,7 +216,7 @@ public class ArticleInfoDaoImpl extends BaseDao implements ArticleInfoDao {
 			list.add(articleInfo);
 		}
 
-		System.out.println("---------- 查询到 " + list.size() + " 条文章信息 ---------");
+		//System.out.println("---------- 查询到 " + list.size() + " 条文章信息 ---------");
 
 		BaseDao.closeAll(conn, stmt, rs);
 		return list;

@@ -7,13 +7,13 @@ window.onload = function() {
 function showAllArticleInfo() {
     $.ajax({
         type: "get",
-        url: "http://localhost:8080/api/article/showAllArticleInfo",
+        url: "http://localhost:8080/api/article/getAllArticleInfo",
         dataType: "json",
         success: function(json) {
             $.each(json, function(i, item) {
                 // 填充文章信息
                 var articleInfo = document.querySelector("#articleInfo");
-                articleInfo.content.querySelector("#id").innerHTML = item.id;
+                articleInfo.content.querySelector("#articleId").innerHTML = item.id;
                 articleInfo.content.querySelector("#articleTitle").innerHTML = item.title;
                 articleInfo.content.querySelector("#articleCreateTime").innerHTML = item.createTime;
                 articleInfo.content.querySelector("#articleSummary").innerHTML = item.summary;
@@ -26,7 +26,7 @@ function showAllArticleInfo() {
 
 // 跳转到指定文章
 function showArticle(_this) {
-    var articleId = $(_this).children("h6").text();
-    var url = "article.html?articleId=" + articleId;
+    var id = $(_this).children("#articleId").text();
+    var url = "article.html?articleId=" + id;
     window.location.href = url;
 }

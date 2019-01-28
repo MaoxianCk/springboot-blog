@@ -30,6 +30,7 @@ public class ArticleInfo {
 	private int articleId;
 
 	// 该文章对应的文章评论表id号
+	@Deprecated
 	private List<Integer> articleCommentIdList;
 
 	public ArticleInfo(int id, String title, String summary, boolean isTop, Timestamp createTime,
