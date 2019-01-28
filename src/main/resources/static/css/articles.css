@@ -4,31 +4,36 @@
 }
 
 #articleInfos {
-    width: 60%;
-    padding-left: 140px;
+    width: 100%;
     overflow: hidden;
     display: block;
 }
 
 .articleInfo {
-    width: 180px;
+    width: 57.3%;
     float: left;
-    margin: 0px 30px 30px 30px;
-    /*padding: 3px;*/
+    margin-bottom: 30px;
 }
 
 .articleInfo:hover {
     cursor: pointer;
-    /*padding: 0px;*/
-    /*border: 3px #000000 solid;*/
 }
 
-.articleInfo img {
-    object-fit: cover;
-    height: 180px;
+.articleInfo:hover h1 {
+    color: #db3e39;
+    transition: 0.3s;
     width: 180px;
 }
 
-.articleTitle {
-    width: 180px;
+.articleInfo h1 {
+    color: black;
+    transition: 0.5s;
+}
+
+.articleInfo h6 {
+    color: rgb(77, 77, 77);
+}
+
+.articleInfo h4 {
+    color: black;
 }

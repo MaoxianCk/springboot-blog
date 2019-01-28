@@ -4,6 +4,8 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 
 /**
  * 文章表 article_info表 实体类
@@ -96,6 +98,7 @@ public class ArticleInfo {
 		this.isTop = isTop;
 	}
 
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
 	public Timestamp getCreateTime() {
 		return createTime;
 	}
@@ -104,6 +107,7 @@ public class ArticleInfo {
 		this.createTime = createTime;
 	}
 
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
 	public Timestamp getModifiedTime() {
 		return modifiedTime;
 	}

@@ -73,7 +73,7 @@ public class ArticleInfoDaoImpl extends BaseDao implements ArticleInfoDao {
 
 	@Override
 	public ArticleInfo selectArticleInfoById(int recordId) throws Exception {
-		System.out.println("---------- 查询 id : " + recordId + " 文章信息 ----------");
+		//System.out.println("---------- 查询 id : " + recordId + " 文章信息 ----------");
 		Connection conn = BaseDao.getConnection();
 		String sql = "select * from article_info where id = " + recordId;
 
@@ -98,7 +98,7 @@ public class ArticleInfoDaoImpl extends BaseDao implements ArticleInfoDao {
 
 	@Override
 	public ArticleInfo selectArticleInfoByArticleContentId(int recordArticleContentId) throws Exception {
-		System.out.println("---------- 查询 article_id : " + recordArticleContentId + " 文章信息 ----------");
+		//System.out.println("---------- 查询 article_id : " + recordArticleContentId + " 文章信息 ----------");
 		Connection conn = BaseDao.getConnection();
 		String sql = "select * from article_info where article_id = " + recordArticleContentId;
 
@@ -124,7 +124,7 @@ public class ArticleInfoDaoImpl extends BaseDao implements ArticleInfoDao {
 
 	@Override
 	public List<ArticleInfo> selectArticleInfoByTitle(String recordTitle) throws Exception {
-		System.out.println("---------- 查询 title : " + recordTitle + " 文章信息 ----------");
+		//System.out.println("---------- 查询 title : " + recordTitle + " 文章信息 ----------");
 		Connection conn = BaseDao.getConnection();
 		String sql = "select * from article_info where title like \"%\"?\"%\"";
 
@@ -149,7 +149,7 @@ public class ArticleInfoDaoImpl extends BaseDao implements ArticleInfoDao {
 
 	@Override
 	public List<ArticleInfo> selectArticleInfoBySummaryParts(String recordSummaryParts) throws Exception {
-		System.out.println("---------- 查询 summary : " + recordSummaryParts + " 文章信息 ----------");
+		//System.out.println("---------- 查询 summary : " + recordSummaryParts + " 文章信息 ----------");
 		Connection conn = BaseDao.getConnection();
 		String sql = "select * from article_info where summary like \"%\"?\"%\"";
 
@@ -174,7 +174,7 @@ public class ArticleInfoDaoImpl extends BaseDao implements ArticleInfoDao {
 
 	@Override
 	public List<ArticleInfo> selectArticleInfoByIsTop(boolean recordIsTop) throws Exception {
-		System.out.println("---------- 查询 is_top : " + recordIsTop + " 文章信息 ----------");
+		//System.out.println("---------- 查询 is_top : " + recordIsTop + " 文章信息 ----------");
 		Connection conn = BaseDao.getConnection();
 		String sql = "select * from article_info where is_top = " + recordIsTop;
 
@@ -199,7 +199,7 @@ public class ArticleInfoDaoImpl extends BaseDao implements ArticleInfoDao {
 
 	@Override
 	public List<ArticleInfo> selectArticleInfoAll() throws Exception {
-		System.out.println("---------- 查询所有文章信息 ----------");
+		//System.out.println("---------- 查询所有文章信息 ----------");
 		Connection conn = BaseDao.getConnection();
 		String sql = "select * from article_info";
 

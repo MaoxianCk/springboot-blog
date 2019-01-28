@@ -13,9 +13,10 @@ function showAllArticleInfo() {
             $.each(json, function(i, item) {
                 // 填充文章信息
                 var articleInfo = document.querySelector("#articleInfo");
-                articleInfo.content.querySelector("h1").innerHTML = item.title;
-                articleInfo.content.querySelector("h6").innerHTML = item.createTime;
-                articleInfo.content.querySelector("h4").innerHTML = item.summary;
+                articleInfo.content.querySelector("#id").innerHTML = item.id;
+                articleInfo.content.querySelector("#articleTitle").innerHTML = item.title;
+                articleInfo.content.querySelector("#articleCreateTime").innerHTML = item.createTime;
+                articleInfo.content.querySelector("#articleSummary").innerHTML = item.summary;
 
                 document.getElementById("articleInfos").appendChild(articleInfo.content.cloneNode(true));
             });

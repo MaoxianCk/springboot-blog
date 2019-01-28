@@ -120,13 +120,6 @@ public class ArticleServiceImpl extends BaseService implements ArticleService {
 		List<ArticleInfo> list = new ArrayList<ArticleInfo>();
 		try {
 			list = articleInfoDaoImpl.selectArticleInfoAll();
-			if(list==null) {
-				System.out.println("==================================");
-			}else {
-				for(ArticleInfo ele:list) {
-					ele.printArticleInfo();
-				}
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

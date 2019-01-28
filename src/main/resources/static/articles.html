@@ -24,21 +24,25 @@
     <!--顶部导航 over-->
 
     <!--中部主体-->
-    <div class="center-block" style="width: 60%;">
+    <div class="1center-block" style="margin-left: 30% ">
         <div id="content">
             <div id="articleInfos">
                 <template id="articleInfo">
-                    <!--文章标题-->
-                    <div>
-                        <h1 id="articleTitle">这里是文章的标题</h1>
-                    </div>
-                    <!--文章创建时间-->
-                    <div>
-                        <h6 id="articleCreateTime">时间：这里是文章创建时间</h5>
-                    </div>
-                    <!--文章简介-->
-                    <div id="articleSummary" style="clear: both;">
-                        <h4 id="articleCreateTime">这里是文章的简介</h5>
+                    <div class="articleInfo" onclick="showArticle(this)">
+                        <!--文章信息id-->
+                        <h1 id="id" style="display:none;"></h1>
+                        <!--文章标题-->
+                        <div>
+                            <h1 id="articleTitle">这里是文章的标题</h1>
+                        </div>
+                        <!--文章创建时间-->
+                        <div>
+                            <h6 id="articleCreateTime" style="margin-left: 30px;">时间：这里是文章创建时间</h6>
+                        </div>
+                        <!--文章简介-->
+                        <div style="clear: both;">
+                            <h4 id="articleSummary">这里是文章的简介</h4>
+                        </div>
                     </div>
                 </template>
             </div>
