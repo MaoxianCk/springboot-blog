@@ -1,0 +1,34 @@
+#content {
+    margin-top: 60px;
+    min-height: 640px;
+}
+
+#articleInfos {
+    width: 60%;
+    padding-left: 140px;
+    overflow: hidden;
+    display: block;
+}
+
+.articleInfo {
+    width: 180px;
+    float: left;
+    margin: 0px 30px 30px 30px;
+    /*padding: 3px;*/
+}
+
+.articleInfo:hover {
+    cursor: pointer;
+    /*padding: 0px;*/
+    /*border: 3px #000000 solid;*/
+}
+
+.articleInfo img {
+    object-fit: cover;
+    height: 180px;
+    width: 180px;
+}
+
+.articleTitle {
+    width: 180px;
+}

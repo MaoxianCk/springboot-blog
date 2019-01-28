@@ -11,7 +11,6 @@ public interface ArticleInfoDao {
 	
 	public ArticleInfo selectArticleInfoById(int recordId) throws Exception;
 	public ArticleInfo selectArticleInfoByArticleContentId(int recordArticleContentId) throws Exception;
-	public ArticleInfo selectArticleInfoByCommentId(int recordCommentId) throws Exception; 
 	public List<ArticleInfo> selectArticleInfoByTitle(String recordTitle) throws Exception;
 	public List<ArticleInfo> selectArticleInfoBySummaryParts(String recordSummaryParts) throws Exception;
 	public List<ArticleInfo> selectArticleInfoByIsTop(boolean recordIsTop) throws Exception;

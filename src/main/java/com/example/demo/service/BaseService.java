@@ -8,11 +8,17 @@ import com.example.demo.dao.user.UserDaoImpl;
 public class BaseService {
 	
 	// ArticleDaoImpl
-	public static ArticleInfoDaoImpl articleInfoDaoImpl;
-	public static ArticleContentDaoImpl articleContentDaoImpl;
-	public static ArticleCommentDaoImpl articleCommentDaoImpl;
+	public ArticleInfoDaoImpl articleInfoDaoImpl;
+	public ArticleContentDaoImpl articleContentDaoImpl;
+	public ArticleCommentDaoImpl articleCommentDaoImpl;
 	
 	// UserDaoImpl;
-	public static UserDaoImpl userDaoImpl;
-
+	public UserDaoImpl userDaoImpl;
+	
+public BaseService() {
+	articleInfoDaoImpl=new ArticleInfoDaoImpl();
+	articleContentDaoImpl=new ArticleContentDaoImpl();
+	articleCommentDaoImpl=new ArticleCommentDaoImpl();
+	userDaoImpl=new UserDaoImpl();
+}
 }

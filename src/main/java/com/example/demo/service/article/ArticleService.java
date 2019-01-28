@@ -13,4 +13,5 @@ public interface ArticleService {
 	public Article findArticle(int articleInfoId);
 	public List<Article> findArticles(String title,String contentPart);
 	public List<Article> findArticles();
+	public List<ArticleInfo> findArticleInfos();
 }

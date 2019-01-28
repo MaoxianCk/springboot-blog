@@ -123,32 +123,6 @@ public class ArticleInfoDaoImpl extends BaseDao implements ArticleInfoDao {
 	}
 
 	@Override
-	public ArticleInfo selectArticleInfoByCommentId(int recordCommentId) throws Exception {
-		System.out.println("---------- 查询 comment_id : " + recordCommentId + " 文章信息 ----------");
-		Connection conn = BaseDao.getConnection();
-		String sql = "select * from article_info where comment_id = " + recordCommentId;
-
-		PreparedStatement stmt = conn.prepareStatement(sql);
-
-		ResultSet rs = stmt.executeQuery();
-
-		ArticleInfo articleInfo = null;
-		int i = 0;
-		while (rs.next()) {
-			articleInfo = new ArticleInfo(rs.getInt("id"), rs.getString("title"), rs.getString("summary"),
-					rs.getBoolean("is_top"), rs.getTimestamp("create_time"), rs.getTimestamp("modified_time"),
-					rs.getInt("article_id"));
-			i++;
-			break;
-		}
-
-		System.out.println("---------- 查询到 " + i + " 条文章信息 ---------");
-
-		BaseDao.closeAll(conn, stmt, rs);
-		return articleInfo;
-	}
-
-	@Override
 	public List<ArticleInfo> selectArticleInfoByTitle(String recordTitle) throws Exception {
 		System.out.println("---------- 查询 title : " + recordTitle + " 文章信息 ----------");
 		Connection conn = BaseDao.getConnection();

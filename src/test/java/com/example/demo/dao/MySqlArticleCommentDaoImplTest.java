@@ -26,11 +26,11 @@ public class MySqlArticleCommentDaoImplTest {
 			
 			//插入10条记录 时间为当前时间
 			for(int i=1;i<=10;i++) {
-				articleCommentDaoImpl.insertArticleComment(new ArticleComment(0, "content "+String.valueOf(i) , String.valueOf(i), true, i));
+				articleCommentDaoImpl.insertArticleComment(new ArticleComment(0, "comment "+String.valueOf(i) , String.valueOf(i), true, i));
 			}
 			//插入5条记录 时间为当前时间
 			for(int i=6;i<=10;i++) {
-				articleCommentDaoImpl.insertArticleComment(new ArticleComment(0, "content "+String.valueOf(i), String.valueOf(i), true, i));
+				articleCommentDaoImpl.insertArticleComment(new ArticleComment(0, "comment "+String.valueOf(i), String.valueOf(i), true, i));
 			}
 			_list = articleCommentDaoImpl.selectArticleCommentAll();
 			printArticleCommentList(_list);
@@ -41,19 +41,19 @@ public class MySqlArticleCommentDaoImplTest {
 			printArticleCommentList(_list);
 			
 			//更新id 3 的记录 ，结果应只变更iseffective
-			ArticleComment recordArticleComment =new ArticleComment(3, "context updated" , "updated", false, 99);
+			ArticleComment recordArticleComment =new ArticleComment(3, "comment updated" , "updated", false, 99);
 			articleCommentDaoImpl.updateArticleComment(recordArticleComment);
 			_list = articleCommentDaoImpl.selectArticleCommentAll();
 			printArticleCommentList(_list);
 			
 			//查找测试...
-			_articleComment=articleCommentDaoImpl.selectArticleCommentByArticleInfoId(3);
-			printArticleComment(_articleComment);
+			_list=articleCommentDaoImpl.selectArticleCommentByArticleInfoId(8);
+			printArticleCommentList(_list);
 			
 			_articleComment=articleCommentDaoImpl.selectArticleCommentById(3);
 			printArticleComment(_articleComment);
 
-			_list=articleCommentDaoImpl.selectArticleCommentByContentParts("cons");
+			_list=articleCommentDaoImpl.selectArticleCommentByContentParts("t 8");
 			printArticleCommentList(_list);
 			
 			_list=articleCommentDaoImpl.selectArticleCommentByIsEffective(false);
