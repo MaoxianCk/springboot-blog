@@ -1,7 +1,9 @@
  #header {
+     padding: 0;
      font-size: 16px;
      font-family: "微软雅黑";
      margin-bottom: 20px;
+     text-align: center;
      /*background-color: cornflowerblue;*/
  }
  
@@ -21,17 +23,42 @@
  }
  
  #header-top {
-     width: 100%;
+     width: 470px;
+     margin: 0 auto;
      margin-top: 10px;
      text-align: center;
      padding-bottom: 10px;
-     border-bottom: 1px rgb(231, 231, 231) solid;
+ }
+ 
+ #header-logo {
+     top: 0;
+     position: absolute;
+     float: left;
+     height: 30px;
+     width: 30px;
+     margin-top: 6px;
+     margin-left: 10px;
+     border-radius: 15px;
+     transition: 0.3s;
+ }
+ 
+ #header-logo:hover {
+     box-shadow: 0px 0px 5px 1px #f74141c2;
+     transition: 0.3s;
  }
  
  #header-logo img {
-     float: left;
-     z-index: -1;
      height: 30px;
-     margin-left: 10px;
      border-radius: 15px;
+ }
+ 
+ #time {
+     float: right;
+     margin-top: 0px;
+     margin-right: 10px;
+ }
+ 
+ #_br {
+     height: 1px;
+     background-color: rgb(231, 231, 231);
  }
