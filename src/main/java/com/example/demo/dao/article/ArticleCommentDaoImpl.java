@@ -201,7 +201,7 @@ public class ArticleCommentDaoImpl extends BaseDao implements ArticleCommentDao 
 	public List<ArticleComment> selectArticleCommentAll() throws Exception {
 		//System.out.println("---------- 查询所有文章评论 ----------");
 		Connection conn = BaseDao.getConnection();
-		String sql = "select * from article_comment";
+		String sql = "select * from article_comment order by create_time Desc";
 		PreparedStatement stmt = conn.prepareStatement(sql);
 
 		ResultSet rs = stmt.executeQuery();

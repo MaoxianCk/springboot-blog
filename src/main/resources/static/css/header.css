@@ -8,10 +8,12 @@
  #header-top a {
      margin: 20px 30px;
      color: #000000;
+     transition: 0.5s;
  }
  
  #header-top a:hover {
-     color: #000000;
+     color: #d63276;
+     transition: 0.3s;
      text-decoration: none;
      text-decoration-line: none;
      border-bottom: 2px #000000 solid;

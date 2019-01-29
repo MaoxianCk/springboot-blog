@@ -82,7 +82,7 @@ public class CommentServiceImpl extends BaseService implements CommentService {
 		List<ArticleComment> list = null;
 		try {
 
-			articleCommentDaoImpl.selectArticleCommentAll();
+			list = articleCommentDaoImpl.selectArticleCommentAll();
 
 		} catch (Exception e) {
 			e.printStackTrace();

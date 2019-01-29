@@ -11,6 +11,7 @@ public interface ArticleService {
 	public void deleteArticle(int articleInfoId);
 	public void updateArticle(ArticleInfo info,ArticleContent content);
 	public Article findArticle(int articleInfoId);
+	public ArticleInfo findArticleInfo(int articleInfoId);
 	public List<Article> findArticles(String title,String contentPart);
 	public List<Article> findArticles();
 	public List<ArticleInfo> findArticleInfos();

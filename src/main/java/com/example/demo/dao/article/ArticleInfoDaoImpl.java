@@ -201,7 +201,7 @@ public class ArticleInfoDaoImpl extends BaseDao implements ArticleInfoDao {
 	public List<ArticleInfo> selectArticleInfoAll() throws Exception {
 		//System.out.println("---------- 查询所有文章信息 ----------");
 		Connection conn = BaseDao.getConnection();
-		String sql = "select * from article_info";
+		String sql = "select * from article_info order by modified_time Desc";
 
 		PreparedStatement stmt = conn.prepareStatement(sql);
 

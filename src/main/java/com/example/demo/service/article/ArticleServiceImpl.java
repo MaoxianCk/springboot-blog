@@ -63,6 +63,19 @@ public class ArticleServiceImpl extends BaseService implements ArticleService {
 		}
 		return article;
 	}
+	
+	@Override
+	public ArticleInfo findArticleInfo(int articleInfoId) {
+		ArticleInfo articleInfo = null;
+		try {
+
+			articleInfo = articleInfoDaoImpl.selectArticleInfoById(articleInfoId);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return articleInfo;
+	}
 
 	@Override
 	public List<Article> findArticles(String title, String contentPart) {

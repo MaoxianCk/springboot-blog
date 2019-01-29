@@ -8,13 +8,13 @@
     <title>Maoxian</title>
 
     <!-- 引入 JQ 和 Bootstrap -->
-    <script src="lib/jQuery/jQuery.js"></script>
     <link href="lib/bootstrap\css\bootstrap.min.css" rel="stylesheet">
-    <script src="lib/bootstrap\js\bootstrap.js"></script>
     <!--引入自己的CSS-->
     <link href="css/mycss.css" rel="stylesheet">
     <link href="css/header.css" rel="stylesheet">
     <link href="css/footer.css" rel="stylesheet">
+    <link href="css/comments.css" rel="stylesheet">
+    <link href="css/article-content.css" rel="stylesheet">
 
     <!--引入自己的JS-->
     <script src="js/myjs.js"></script>
@@ -27,9 +27,23 @@
     <!--顶部导航 over-->
 
     <!--中部主体-->
-    <div class="center-block" style="width: 60%;">
+    <div class="center-block" style="margin-left: 30%;">
         <div id="content">
-            <p>comment</p>
+            <!--评论列表-->
+            <div style="margin-top: 30px;">
+                <label>评论列表：</label>
+            </div>
+            <div id="articleComments" style="width:60%;">
+                <template id="articleComment">
+                    <div class="articleComment">
+                        <h1 id="articleId" style="display:none"></h1>
+                        <div id="commentCreatTime"></div>
+                        <h4 id="articleTitle" onclick="showArticle(this)"></h4>
+                        <span id="commentName"></span>
+                        <div id="commentContent"></div>
+                    </div>
+                </template>
+            </div>
         </div>
     </div>
     <!--中部主体 over-->
@@ -38,6 +52,9 @@
     <div class="footerpage"></div>
     <!--footer over-->
 </body>
+<script src="js/comments.js"></script>
+<script src="lib/jQuery/jQuery.js"></script>
+<script src="lib/bootstrap\js\bootstrap.js"></script>
 <script>
     $(function() {
         $(".headerpage").load("header.html");
