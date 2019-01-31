@@ -3,6 +3,7 @@ package com.example.demo.dao.user;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -82,7 +83,7 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 	public User selectUserByAccount(String recordAccount) throws Exception {
 		System.out.println("---------- 查询 account : "+recordAccount+" 用户 ----------");
 		Connection conn = BaseDao.getConnection();
-		String sql = "select * from user_account where account = " + recordAccount;
+		String sql = "select * from user_account where account = '" + recordAccount+"'";
 		PreparedStatement stmt = conn.prepareStatement(sql);
 
 		ResultSet rs = stmt.executeQuery();
@@ -189,4 +190,24 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 		return i;
 	}
 
+	@Override
+	public int updateUserLoginTime(int id) throws Exception{
+		Connection conn = BaseDao.getConnection();
+		PreparedStatement stmt = null;
+		String sql = "update user_account set last_login_time = ? where id = ?";
+		int i = -1;
+
+		try {
+			stmt = conn.prepareStatement(sql);
+			stmt.setTimestamp(1, new Timestamp(System.currentTimeMillis()));
+			stmt.setInt(2, id);
+			i = stmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("---------- 修改用户错误 ----------");
+		}
+
+		BaseDao.closeAll(conn, stmt, null);
+		return i;
+	}
 }

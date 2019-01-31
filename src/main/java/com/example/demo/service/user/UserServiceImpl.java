@@ -40,7 +40,28 @@ public class UserServiceImpl extends BaseService implements UserService {
 			e.printStackTrace();
 		}
 	}
+	
+	@Override
+	public void setLoginTime(int id) {
+		try {
+			
+			userDaoImpl.updateUserLoginTime(id);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
+	@Override
+	public User findUser(String account) {
+		User user = null;
+		try {
+			user = userDaoImpl.selectUserByAccount(account);
+		} catch (Exception e) {
+			e.getStackTrace();
+		}
+		return user;
+	}
 	@Override
 	public User findUser(int id) {
 		User user = null;

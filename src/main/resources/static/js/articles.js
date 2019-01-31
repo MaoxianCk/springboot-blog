@@ -15,6 +15,9 @@ function showAllArticleInfo() {
                 var articleInfo = document.querySelector("#articleInfo");
                 articleInfo.content.querySelector("#articleId").innerHTML = item.id;
                 articleInfo.content.querySelector("#articleTitle").innerHTML = item.title;
+                if (item.isTop == true) {
+                    articleInfo.content.querySelector("#articleTitle").innerHTML = "<span id=\"top\">[置顶]</span>" + item.title;
+                }
                 articleInfo.content.querySelector("#articleCreateTime").innerHTML = item.createTime;
                 articleInfo.content.querySelector("#articleSummary").innerHTML = item.summary;
 

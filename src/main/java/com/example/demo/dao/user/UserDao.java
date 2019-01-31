@@ -17,4 +17,5 @@ public interface UserDao {
 	public List<User> selectUserAll() throws Exception;
 	
 	public int updateUser(User recordUser) throws Exception;
+	public int updateUserLoginTime(int id) throws Exception;
 }

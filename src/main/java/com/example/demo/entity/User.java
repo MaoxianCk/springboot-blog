@@ -25,6 +25,30 @@ public class User {
 		this.role = role;
 	}
 	
+	public User(String name,String account,String password) {
+		this.id = 0;
+		this.account = account;
+		this.password = password;
+		this.name = name;
+		this.role = 3;
+	}
+	
+	public User(String account,String password) {
+		this.id = 0;
+		this.account = account;
+		this.password = password;
+		this.name = null;
+		this.role = 3;
+	}
+	
+	public User() {
+		this.id = 0;
+		this.account = null;
+		this.password = null;
+		this.name = null;
+		this.role = 3;
+	}
+	
 	public void printUserInfo() {
 		System.out.println("id:" + getId() + "\taccount:" + getAccount() + "\tpassword:"
 				+ getPassword() + "\tname:" + getName() + "\trole:" + getRole());
@@ -32,6 +56,9 @@ public class User {
 
 	public int getId() {
 		return id;
+	}
+	public void setId(int id) {
+		this.id=id;
 	}
 	
 	public String getAccount() {

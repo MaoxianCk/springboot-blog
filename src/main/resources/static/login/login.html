@@ -19,53 +19,50 @@
             <!-- 注册块 -->
             <div id="signup">
                 <h1 style="margin-bottom: 20px;">Sign Up</h1>
-                <form action="/" method="post">
-                    <div class="field-wrap">
-                        <label>
-                            Name<span class="req">*</span>
-                        </label>
-                        <input type="text" required autocomplete="off" />
-                    </div>
-                    <div class="field-wrap">
-                        <label>
-                            Account<span class="req">*</span>
-                        </label>
-                        <input type="text" required autocomplete="off" />
-                    </div>
-                    <div class="field-wrap">
-                        <label>
-                            Password<span class="req">*</span>
-                        </label>
-                        <input type="password" required autocomplete="off" />
-                    </div> <button type="submit" class="button button-block">Get Started</button>
-                </form>
+                <div class="field-wrap">
+                    <label>
+                        Name<span class="req">*</span>
+                    </label>
+                    <input id="newName" type="text" required autocomplete="off" />
+                </div>
+                <div class="field-wrap">
+                    <label>
+                        Account<span class="req">*</span>
+                    </label>
+                    <input id="newAccount" type="text" required autocomplete="off" />
+                </div>
+                <div class="field-wrap">
+                    <label>
+                        Password<span class="req">*</span>
+                    </label>
+                    <input id="newPassword" type="password" required autocomplete="off" />
+                </div>
+                <button id="sign-up" type="submit" class="button button-block">Get Started</button>
             </div>
 
             <!-- 登录块 -->
             <div id="login">
                 <h1 style="margin-bottom: 20px;">Welcome Back!</h1>
-                <form action="/" method="post">
-                    <div class="field-wrap">
-                        <label>
-                            Account<span class="req">*</span>
-                        </label>
-                        <input type="text" required autocomplete="off" />
-                    </div>
-                    <div class="field-wrap">
-                        <label>
-                            Password<span class="req">*</span>
-                        </label>
-                        <input type="password" required autocomplete="off" />
-                    </div>
-                    <button class="button button-block">Log In</button>
-                </form>
+                <div class="field-wrap">
+                    <label>
+                        Account<span class="req">*</span>
+                    </label>
+                    <input id="account" type="text" required autocomplete="off" />
+                </div>
+                <div class="field-wrap">
+                    <label>
+                        Password<span class="req">*</span>
+                    </label>
+                    <input id="password" type="password" required autocomplete="off" />
+                </div>
+                <button id="sign-in" class="button button-block">Log In</button>
             </div>
         </div>
         <!-- tab-content -->
     </div>
     <!-- /form -->
     <script src='../lib/jQuery/jQuery.js'></script>
-    <script src="js/index.js"></script>
+    <script src="js/login.js"></script>
 </body>
 
 </html>

@@ -66,7 +66,7 @@ public class ForeController extends BaseController {
 	
 	//增加一条评论
 	@PostMapping("/article/postComment/{id}")
-    public String addArticleComment(@PathVariable int id, @RequestBody ArticleComment articleComment, HttpServletRequest request) {
+    public String addArticleComment(@PathVariable int id, @RequestBody ArticleComment articleComment) {
 		System.out.println("=========================================");
 		System.out.println(new Timestamp(System.currentTimeMillis())+"  请求接口: postComment("+id+")");
 		articleComment.setArticleInfoId(id);
