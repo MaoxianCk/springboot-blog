@@ -17,6 +17,6 @@ public interface ArticleCommentDao {
 	public List<ArticleComment> selectArticleCommentByIsEffective(boolean recordIsEffective) throws Exception;
 	public List<ArticleComment> selectArticleCommentAll() throws Exception;
 	
-	
+
 	public int updateArticleComment(ArticleComment recordArticleComment) throws Exception;
 }

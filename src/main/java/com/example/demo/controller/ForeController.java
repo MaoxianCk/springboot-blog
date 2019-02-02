@@ -19,14 +19,14 @@ import com.example.demo.entity.ArticleInfo;
 @RestController
 @RequestMapping("/api")
 public class ForeController extends BaseController {
-	//获取文章信息
-		@GetMapping("/article/getArticleInfo/{id}")
-		public ArticleInfo showArticleInfo(@PathVariable int id) {
-			System.out.println("=========================================");
-			System.out.println(new Timestamp(System.currentTimeMillis())+"  请求接口: getArticleInfo("+id+")");
-			ArticleInfo info=articleService.findArticleInfo(id);
-			return info;
-		}
+	// 获取文章信息
+	@GetMapping("/article/getArticleInfo/{id}")
+	public ArticleInfo showArticleInfo(@PathVariable int id) {
+		System.out.println("=========================================");
+		System.out.println(new Timestamp(System.currentTimeMillis()) + "  请求接口: getArticleInfo(" + id + ")");
+		ArticleInfo info = articleService.findArticleInfo(id);
+		return info;
+	}
 		
 	//获取所有文章信息
 	@GetMapping("/article/getAllArticleInfo")

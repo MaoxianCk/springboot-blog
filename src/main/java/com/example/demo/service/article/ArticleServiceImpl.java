@@ -10,7 +10,19 @@ import com.example.demo.entity.ArticleInfo;
 import com.example.demo.service.BaseService;
 
 public class ArticleServiceImpl extends BaseService implements ArticleService {
+	@Override
+	public void addArticle(Article article) {
+		try {
 
+			int infoId=articleInfoDaoImpl.insertArticleInfo(article.getArticleInfo());
+			article.getArticleContent().setArticleInfoId(infoId);
+			articleContentDaoImpl.insertArticleContent(article.getArticleContent());
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	@Override
 	public void addArticle(ArticleInfo info, ArticleContent content) {
 		try {
@@ -43,6 +55,18 @@ public class ArticleServiceImpl extends BaseService implements ArticleService {
 
 			articleInfoDaoImpl.updateArticleInfo(info);
 			articleContentDaoImpl.updateArticleContent(content);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Override
+	public void updateArticle(Article article) {
+		try {
+
+			articleInfoDaoImpl.updateArticleInfo(article.getArticleInfo());
+			articleContentDaoImpl.updateArticleContent(article.getArticleContent());
 
 		} catch (Exception e) {
 			e.printStackTrace();

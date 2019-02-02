@@ -100,5 +100,17 @@ public class UserServiceImpl extends BaseService implements UserService {
 		}
 		return list;
 	}
-
+	
+	@Override
+	public List<User> findUsers() {
+		List<User> list = new ArrayList<User>();
+		try {
+			
+			list = userDaoImpl.selectUserAll();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
 }

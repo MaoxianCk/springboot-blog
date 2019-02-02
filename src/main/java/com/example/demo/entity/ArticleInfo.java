@@ -60,6 +60,21 @@ public class ArticleInfo {
 		this.articleId = articleId;
 		this.articleCommentIdList = new ArrayList<Integer>();
 	}
+	
+	public ArticleInfo() {
+		super();
+		this.id = 0;
+		this.title = null;
+		this.summary = null;
+		this.isTop = false;
+
+		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+		this.createTime = timestamp;
+		this.modifiedTime = timestamp;
+
+		this.articleId = 0;
+		this.articleCommentIdList = null;
+	}
 
 	public void printArticleInfo() {
 		System.out.println("id:" + getId() + "\ttitle:" + getTitle() + "\tsummary:" + getSummary() + "\tisTop:"

@@ -27,17 +27,17 @@ public class MySqlUserDaoImplTest {
 
 			// 新增10条记录 1-10
 			for (int i = 1; i <= 10; i++) {
-				User user = new User(0, String.valueOf(i), String.valueOf(i), String.valueOf(i), 1);
+				User user = new User(0, String.valueOf(i), String.valueOf(i), String.valueOf(i), 1,null);
 				userDaoImpl.insertUser(user);
 			}
 			// 增加3条重复记录 7-9
 			for (int i = 7; i <= 9; i++) {
-				User user = new User(0, String.valueOf(i), String.valueOf(i), String.valueOf(i), 1);
+				User user = new User(0, String.valueOf(i), String.valueOf(i), String.valueOf(i), 1,null);
 				userDaoImpl.insertUser(user);
 			}
 			// 增加4条 role为2 重复记录 5-8
 			for (int i = 5; i <= 8; i++) {
-				User user = new User(0, String.valueOf(i), String.valueOf(i), String.valueOf(i), 2);
+				User user = new User(0, String.valueOf(i), String.valueOf(i), String.valueOf(i), 2,null);
 				userDaoImpl.insertUser(user);
 			}
 

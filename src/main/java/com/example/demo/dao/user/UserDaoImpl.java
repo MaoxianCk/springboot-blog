@@ -69,7 +69,7 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 		int i=0;
 		while (rs.next()) {
 			user = new User(rs.getInt("id"), rs.getString("account"), rs.getString("password"), rs.getString("name"),
-					rs.getInt("role"));
+					rs.getInt("role"),rs.getTimestamp("last_login_time"));
 			i++;
 		}
 		
@@ -92,7 +92,7 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 		int i=0;
 		while (rs.next()) {
 			user = new User(rs.getInt("id"), rs.getString("account"), rs.getString("password"), rs.getString("name"),
-					rs.getInt("role"));
+					rs.getInt("role"),rs.getTimestamp("last_login_time"));
 			i++;
 			break;
 		}
@@ -115,7 +115,7 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 		ArrayList<User> list=new ArrayList<User>();
 		while (rs.next()) {
 			User user = new User(rs.getInt("id"), rs.getString("account"), rs.getString("password"), rs.getString("name"),
-					rs.getInt("role"));
+					rs.getInt("role"),rs.getTimestamp("last_login_time"));
 			list.add(user);
 		}
 		System.out.println("---------- 查询到 "+ list.size() +" 条用户 ---------");
@@ -136,7 +136,7 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 		ArrayList<User> list=new ArrayList<User>();
 		while (rs.next()) {
 			User user = new User(rs.getInt("id"), rs.getString("account"), rs.getString("password"), rs.getString("name"),
-					rs.getInt("role"));
+					rs.getInt("role"),rs.getTimestamp("last_login_time"));
 			list.add(user);
 		}
 		System.out.println("---------- 查询到 "+ list.size() +" 条用户 ---------");
@@ -149,7 +149,7 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 	public List<User> selectUserAll() throws Exception {
 		System.out.println("---------- 查询所有用户 ----------");
 		Connection conn = BaseDao.getConnection();
-		String sql = "select * from user_account";
+		String sql = "select * from user_account where role = 2 OR role = 3 order by last_login_time Desc";
 		PreparedStatement stmt = conn.prepareStatement(sql);
 
 		ResultSet rs = stmt.executeQuery();
@@ -157,7 +157,7 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 		ArrayList<User> list=new ArrayList<User>();
 		while (rs.next()) {
 			User user = new User(rs.getInt("id"), rs.getString("account"), rs.getString("password"), rs.getString("name"),
-					rs.getInt("role"));
+					rs.getInt("role"),rs.getTimestamp("last_login_time"));
 			list.add(user);
 		}
 		System.out.println("---------- 查询到 "+ list.size() +" 条用户 ---------");

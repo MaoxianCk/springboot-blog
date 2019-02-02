@@ -3,27 +3,27 @@ $(document).ready(function() {
     // 填充博文列表信息
     $.ajax({
         type: "get",
-        url: "http://localhost:8080/api/article/getAllArticleInfo",
+        url: "http://localhost:8080/api/admin/getAllUser",
         dataType: "json",
         success: function(json) {
             var id = 1;
             $.each(json, function(i, item) {
-                $('#tbody-articles').append(
+                $('#tbody-users').append(
                     '<tr>' +
                     '<td>' + (id++) + '</td>' +
-                    '<td>' + item.title + '</td>' +
-                    '<td>' + item.createTime + '</td>' +
-                    '<td>' + item.modifiedTime + '</td>' +
-                    '<td>' + item.isTop + '</td>' +
+                    '<td>' + item.name + '</td>' +
+                    '<td>' + item.account + '</td>' +
+                    '<td>' + item.lastLoginTime + '</td>' +
+                    '<td>' + (item.role == 3 ? "游客" : "管理员") + '</td>' +
                     '<td>' +
-                    '<button class="btn btn-success" onclick="updateArticle(' + item.id + ')">' +
+                    '<button class="btn btn-success" onclick="updateUser(' + item.id + ')">' +
                     '<i class="fa fa-edit"></i> 编辑</button> ' +
-                    '<button class="btn btn-danger" onclick="deleteArticle(' + item.id + ')">' +
+                    '<button class="btn btn-danger" onclick="deleteUser(' + item.id + ')">' +
                     '<i class="fa fa-trash-o"> 删除</i></button></td>' +
                     '</tr>'
                 );
             });
-            $('#dataTables-articles').dataTable();
+            $('#dataTables-users').dataTable();
 
         }
     });
@@ -31,40 +31,37 @@ $(document).ready(function() {
 });
 
 // 删除按钮点击
-function deleteArticle(id) {
-    $('#confirmBtn').attr("articleId", id);
+function deleteUser(id) {
+    $('#confirmBtn').attr("userId", id);
     $('#myModal').modal();
 };
 
 // 确认删除按钮点击
 $('#confirmBtn').click(function() {
-    var id = $(this).attr("articleId");
+    var id = $(this).attr("userId");
     $.ajax({
         type: "DELETE",
-        url: "http://localhost:8080/api/admin/deleteArticle/" + id,
+        url: "http://localhost:8080/api/admin/deleteUser/" + id,
         success: function() {
-            // 刷新页面
             location.reload();
         }
     });
 });
 
-// 编辑文章按钮点击
-function updateArticle(id) {
+// 编辑按钮点击
+function updateUser(id) {
     // 往模态框填充数据
-    $('#updateBtn').attr("articleId", id);
+    $('#updateBtn').attr("userId", id);
     $.ajax({
         type: "get",
-        url: "http://localhost:8080/api/article/getArticle/" + id,
+        url: "http://localhost:8080/api/admin/getUser/" + id,
         dataType: "json",
-        async: false,
         success: function(json) {
-            $('#articleTitle').val(json.articleInfo.title);
-            $('#articleSummary').val(json.articleInfo.summary);
-            if (json.articleInfo.isTop == true) {
-                document.getElementById("articleTop").checked = true;
+            if (json.role == 3) {
+                document.getElementById("role3").checked = true;
+            } else {
+                document.getElementById("role2").checked = true;
             }
-            $('#articleContent').val(json.articleContent.content);
         }
     });
 
@@ -72,29 +69,24 @@ function updateArticle(id) {
     $('#updateModal').modal();
 };
 
-// 更新文章按钮点击事件
+// 更新按钮点击事件
 $('#updateBtn').click(function() {
-    var articleId = $('#updateBtn').attr("articleId");
-    var articleTitle = $('#articleTitle').val();
-    var articleSummary = $("#articleSummary").val();
-    var articleTop = document.getElementById("articleTop").checked;
-    var articleContent = $('#articleContent').val();
-    var article = {
-        articleInfo: {
-            title: articleTitle,
-            summary: articleSummary,
-            isTop: articleTop
-        },
-        articleContent: {
-            content: articleContent
-        }
+    var userId = $('#updateBtn').attr("userId");
+    var role;
+    if (document.getElementById("role3").checked == true) {
+        role = 3;
+    } else if (document.getElementById("role2").checked == true) {
+        role = 2;
+    }
+    var user = {
+        role: role
     }
     $.ajax({
         type: "PUT",
-        url: "http://localhost:8080/api/admin/updateArticle/" + articleId,
+        url: "http://localhost:8080/api/admin/updateUser/" + userId,
         dataType: "json",
         contentType: "application/json;charset=utf-8",
-        data: JSON.stringify(article),
+        data: JSON.stringify(user),
         success: function() {
             location.reload();
         },

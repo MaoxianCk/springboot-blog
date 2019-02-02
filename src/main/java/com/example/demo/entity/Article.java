@@ -12,6 +12,16 @@ public class Article {
 		this.articleContent = articleContent;
 		this.articleCommentList = articleCommentList;
 	}
+	public Article(ArticleInfo articleInfo, ArticleContent articleContent) {
+		this.articleInfo = articleInfo;
+		this.articleContent = articleContent;
+		this.articleCommentList = null;
+	}
+	public Article() {
+		this.articleInfo = null;
+		this.articleContent = null;
+		this.articleCommentList = null;
+	}
 	
 	public ArticleInfo getArticleInfo() {
 		return articleInfo;

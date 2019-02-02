@@ -39,6 +39,15 @@ public class ArticleContent {
 		this.modifiedTime = timestamp;
 		this.articleInfoId = articleInfoId;
 	}
+	public ArticleContent() {
+
+		this.id = 0;
+		this.content = null;
+		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+		this.createTime = timestamp;
+		this.modifiedTime = timestamp;
+		this.articleInfoId = 0;
+	}
 
 	public void printArticleContentInfo() {
 		System.out.println("id:" + getId() + "\tcontent:" +getContent()+ "\tcreatTime:" + getCreateTime() + "\tmodifiedTime:"

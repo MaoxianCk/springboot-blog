@@ -3,6 +3,7 @@ package com.example.demo.dao.article;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +14,7 @@ import com.example.demo.entity.ArticleInfo;
 public class ArticleInfoDaoImpl extends BaseDao implements ArticleInfoDao {
 
 	@Override
+	//插入文章信息并返回主键（ArticleInfoId）
 	public int insertArticleInfo(ArticleInfo recordArticleInfo) throws Exception {
 		Connection conn = BaseDao.getConnection();
 		PreparedStatement stmt = null;
@@ -21,7 +23,7 @@ public class ArticleInfoDaoImpl extends BaseDao implements ArticleInfoDao {
 		int i = -1;
 
 		try {
-			stmt = conn.prepareStatement(sql);
+			stmt = conn.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
 			stmt.setString(1, recordArticleInfo.getTitle());
 			stmt.setString(2, recordArticleInfo.getSummary());
 			stmt.setBoolean(3, recordArticleInfo.getIsTop());
@@ -42,6 +44,12 @@ public class ArticleInfoDaoImpl extends BaseDao implements ArticleInfoDao {
 			stmt.setInt(6, recordArticleInfo.getArticleId());
 
 			i = stmt.executeUpdate();
+			
+			ResultSet rs = stmt.getGeneratedKeys();
+            if(rs.next()){
+                i=rs.getInt(1);//此处只能使用getInt(1) 的方式获取主键值
+            }
+            
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("---------- 插入文章信息错误 ----------");

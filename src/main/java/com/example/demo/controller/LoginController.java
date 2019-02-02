@@ -51,7 +51,7 @@ public class LoginController extends BaseController {
 			if(dbUser!=null) {
 				map.put("msg","账号已存在");
 			}else {
-				dbUser=new User(0, user.getAccount(), user.getPassword(), user.getName(), 3);
+				dbUser=new User(0, user.getAccount(), user.getPassword(), user.getName(), 3,new Timestamp(System.currentTimeMillis()));
 				userService.addUser(dbUser);
 				map.put("msg", "注册成功");
 				map.put("role", "3");

@@ -7,8 +7,10 @@ import com.example.demo.entity.ArticleInfo;
 import com.example.demo.entity.Article;
 
 public interface ArticleService {
+	public void addArticle(Article article);
 	public void addArticle(ArticleInfo info,ArticleContent content);
 	public void deleteArticle(int articleInfoId);
+	public void updateArticle(Article article);
 	public void updateArticle(ArticleInfo info,ArticleContent content);
 	public Article findArticle(int articleInfoId);
 	public ArticleInfo findArticleInfo(int articleInfoId);

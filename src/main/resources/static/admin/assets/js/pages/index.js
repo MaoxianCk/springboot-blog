@@ -1,59 +1,48 @@
-$(document).ready(function () {
+$(document).ready(function() {
 
-    // 填充浏览统计数据
+    // 填充浏览数据
     $.ajax({
-        url: "http://10.2.3.235:80/admin/sys/view",
+        url: "http://localhost:8080/api/admin/getAllUser",
         type: "GET",
         dataType: "json",
-        success: function (json) {
+        success: function(json) {
             $('#count-visits').append(json.length)
-
-            $.each(json, function (i, item) {
+            var id = 1;
+            $.each(json, function(i, item) {
                 $('#tbody-visits').append(
-                    '<tr><td>' + item.id +
-                    '</td><td>' + item.ip +
-                    '</td><td>' + item.createBy + '</td></tr>');
+                    '<tr>' +
+                    '<td>' + (id++) + '</td>' +
+                    '<td>' + item.name + '</td>' +
+                    '<td>' + item.lastLoginTime + '</td>' +
+                    '</tr>');
             });
             $('#dataTables-visits').dataTable();
         }
     });
 
-    // 填充日志统计数据
+    // 填充评论数据
     $.ajax({
-        url: "http://10.2.3.235:80/admin/sys/log",
+        url: "http://localhost:8080/api/admin/getAllComment",
         type: "GET",
         dataType: "json",
-        success: function (json) {
-            $('#count-logs').append(json.length)
-            $.each(json, function (i, item) {
-                $('#tbody-logs').append(
-                    '<tr><td>' + item.id +
-                    '</td><td>' + item.ip +
-                    '</td><td>' + item.createBy +
-                    '</td><td>' + item.remark +
-                    '</td><td>' + item.operateUrl +
-                    '</td><td>' + item.operateBy + '</td></tr>');
-            });
-            $('#dataTables-logs').dataTable();
-        }
-    });
-
-    // 填充评论统计数据
-    $.ajax({
-        url: "http://10.2.3.235:80/api/comment/list",
-        type: "GET",
-        dataType: "json",
-        success: function (json) {
+        success: function(json) {
             $('#count-comments').append(json.length)
-            $.each(json, function (i, item) {
+            var id = 1;
+            $.each(json, function(i, item) {
                 $('#tbody-comments').append(
-                    '<tr><td>' + item.id +
-                    '</td><td>' + item.content +
-                    '</td><td>' + item.createBy +
-                    '</td><td>' + item.name +
-                    '</td><td>' + item.ip +
-                    '</td><td>' + item.isEffective +
-                    '</td><td><button class="btn btn-danger deleteBtn" onclick="deleteComment(\'' + item.id + '\')"><i class="fa fa-trash-o"></i>删除</button></td></tr>');
+                    '<tr>' +
+                    '<td>' + (id++) + '</td>' +
+                    '<td>' + item.content + '</td>' +
+                    '<td>' + item.createTime + '</td>' +
+                    '<td>' + item.name + '</td>' +
+                    '<td>' + item.isEffective + '</td>' +
+                    '<td>' +
+                    '<button class="btn btn-danger deleteBtn" onclick="deleteComment(\'' + item.id + '\')">' +
+                    '<i class="fa fa-trash-o"></i>' +
+                    '删除' +
+                    '</button>' +
+                    '</td>' +
+                    '</tr>');
 
             });
             $('#dataTables-comments').dataTable();
@@ -69,12 +58,12 @@ function deleteComment(id) {
 };
 
 // 确认删除留言点击事件
-$('#confirmBtn').click(function () {
+$('#confirmBtn').click(function() {
     var id = $(this).attr("commentId");
     $.ajax({
         type: "DELETE",
-        url: "http://10.2.3.235:80/admin/comment/" + id,
-        success: function () {
+        url: "http://localhost:8080/api/admin/deleteComment/" + id,
+        success: function() {
             // 刷新页面
             location.reload();
         }

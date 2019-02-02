@@ -13,4 +13,5 @@ public interface UserService {
 	public User findUser(String account);
 	public List<User> findUsers(String name);
 	public List<User> findUsers(int role);
+	public List<User> findUsers();
 }

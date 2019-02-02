@@ -53,6 +53,9 @@
                     <li>
                         <a href="comment.html"><i class="fa fa-envelope"></i> 评论管理</a>
                     </li>
+                    <li>
+                        <a href="user.html"><i class="fa fa-envelope"></i> 用户管理</a>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -83,12 +86,12 @@
                                     <table class="table table-striped table-bordered table-hover" id="dataTables-articles">
                                         <thead>
                                             <tr>
-                                                <th width="7%">文章ID</th>
-                                                <th width="25%">文章名称</th>
-                                                <th width="25%">创建时间</th>
-                                                <th width="25%">修改时间</th>
-                                                <th width="10%">是否置顶</th>
-                                                <th width="8%">操作</th>
+                                                <th width="5%">序号</th>
+                                                <th>文章标题</th>
+                                                <th width="15%">创建时间</th>
+                                                <th width="15%">修改时间</th>
+                                                <th width="7%">是否置顶</th>
+                                                <th width="10%">操作</th>
                                             </tr>
                                         </thead>
                                         <tbody id="tbody-articles">
@@ -222,17 +225,6 @@
                         <div class="col-md-4 col-sm-4 col-xs-4">
                             <label>是否置顶：</label>
                             <input type="checkbox" id="articleTop">
-                        </div>
-                        <div class="col-md-8 col-sm-8 col-xs-8">
-                            <label>文章分类：</label>
-                            <select id="updateCategories"></select>
-                        </div>
-                    </div>
-                    <!-- /. END ROW -->
-                    <div class="row">
-                        <div class="col-md-12">
-                            <label>文章题图：</label>
-                            <input class="form-control" id="articlePicture" />
                         </div>
                     </div>
                     <!-- /. END ROW -->
