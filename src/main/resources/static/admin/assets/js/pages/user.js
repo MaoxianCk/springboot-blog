@@ -95,36 +95,3 @@ $('#updateBtn').click(function() {
         }
     });
 });
-
-// 增加文章按钮点击事件
-$('#addArticleBtn').click(function() {
-    var articleTitle = $('#addArticleTitle').val();
-    var articleSummary = $("#addArticleSummary").val();
-    var articleTop = document.getElementById("addArticleTop").checked;
-    var articleCategoryId = $("#addCategories option:selected").attr("categoryId");
-    var articlePicture = $('#addArticlePicture').val();
-    var articleContent = $('#addArticleContent').val();
-    var article = {
-        articleInfo: {
-            title: articleTitle,
-            summary: articleSummary,
-            isTop: articleTop
-        },
-        articleContent: {
-            content: articleContent
-        }
-    }
-    $.ajax({
-        type: "POST",
-        url: "http://localhost:8080/api/admin/addArticle",
-        dataType: "json",
-        contentType: "application/json;charset=utf-8",
-        data: JSON.stringify(article),
-        success: function() {
-            location.reload();
-        },
-        error: function() {
-            location.reload();
-        }
-    });
-});

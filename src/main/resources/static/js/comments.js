@@ -26,7 +26,7 @@ function showComments() {
                     dataType: "json",
                     success: function(json2) {
                         comment.content.querySelector("#articleTitle").innerHTML = json2.title;
-                        comment.content.querySelector("#articleId").innerHTML = json2.articleId;
+                        comment.content.querySelector("#articleId").innerHTML = json2.id;
                     }
                 });
                 comment.content.querySelector("#commentName").innerHTML = item.name;
