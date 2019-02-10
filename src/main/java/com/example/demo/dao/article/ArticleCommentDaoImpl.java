@@ -10,6 +10,11 @@ import java.util.List;
 import com.example.demo.dao.BaseDao;
 import com.example.demo.entity.ArticleComment;
 
+/**
+ * 文章评论Dao接口实现类
+ * 继承 BaoseDao类 实现 ArticleCommentDao接口
+ * @author:Maoxian
+ */
 public class ArticleCommentDaoImpl extends BaseDao implements ArticleCommentDao {
 
 	@Override
@@ -23,15 +28,17 @@ public class ArticleCommentDaoImpl extends BaseDao implements ArticleCommentDao 
 			stmt = conn.prepareStatement(sql);
 			stmt.setString(1, recordArticleComment.getContent());
 			
+			//设置创建时间
 			if (recordArticleComment.getCreateTime() == null) {
 				stmt.setTimestamp(2, new Timestamp(System.currentTimeMillis()));
 			} else {
 				stmt.setTimestamp(2, recordArticleComment.getCreateTime());
 			}
-			
+			//设置评论者昵称
 			stmt.setString(3, recordArticleComment.getName());
-			
+			//设置评论对应的文章信息id号
 			stmt.setInt(4, recordArticleComment.getArticleInfoId());
+			
 			i = stmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -39,6 +46,8 @@ public class ArticleCommentDaoImpl extends BaseDao implements ArticleCommentDao 
 		}
 
 		BaseDao.closeAll(conn, stmt, null);
+		
+		//返回操作成功数量
 		return i;
 	}
 

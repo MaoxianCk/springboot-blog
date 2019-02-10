@@ -12,6 +12,12 @@ import org.springframework.web.servlet.ModelAndView;
 import com.example.demo.entity.User;
 import com.example.demo.service.user.UserServiceImpl;
 
+/**
+ * 拦截器
+ * 根据用户登录情况拦截后台界面
+ * 允许条件 : 当且仅当当前账号权限为管理员 2或1 时 
+ * @author:Maoxian
+ */
 @Component
 public class MyInterceptor implements HandlerInterceptor {
 	@Override

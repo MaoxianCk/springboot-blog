@@ -19,6 +19,12 @@ import com.example.demo.entity.Article;
 import com.example.demo.entity.ArticleComment;
 import com.example.demo.entity.User;
 
+/**
+ * 网页后台控制器，提供博客后台api 路径为 /api/admin/操作
+ * 增删改 操作可能对数据进行修改
+ * 
+ * @author:Maoxian
+ */
 @RestController
 @RequestMapping("/api/admin")
 public class BackController extends BaseController {
@@ -83,13 +89,16 @@ public class BackController extends BaseController {
 		System.out.println(new Timestamp(System.currentTimeMillis()) + "  请求接口: updateArticle");
 		Article dbArticle = articleService.findArticle(infoId);
 		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+
+		// 提取文章信息表对应内容
 		dbArticle.getArticleInfo().setTitle(article.getArticleInfo().getTitle());
 		dbArticle.getArticleInfo().setSummary(article.getArticleInfo().getSummary());
 		dbArticle.getArticleInfo().setModifiedTime(timestamp);
 		dbArticle.getArticleInfo().setIsTop(article.getArticleInfo().getIsTop());
-
+		// 提取文章内容表对应内容
 		dbArticle.getArticleContent().setContent(article.getArticleContent().getContent());
 		dbArticle.getArticleContent().setModifiedTime(timestamp);
+		// 更新文章
 		articleService.updateArticle(dbArticle);
 		return null;
 	}
@@ -130,35 +139,38 @@ public class BackController extends BaseController {
 		System.out.println(new Timestamp(System.currentTimeMillis()) + "  请求接口: updateUser");
 
 		// 验证操作权限
-		Cookie cookies[] = request.getCookies();
-		String account = "";
-		for (Cookie cookie : cookies) {
-			if (cookie.getName().equals("account")) {
-				account = cookie.getValue();
+		{
+			Cookie cookies[] = request.getCookies();
+			String account = "";
+			for (Cookie cookie : cookies) {
+				if (cookie.getName().equals("account")) {
+					account = cookie.getValue();
+				}
 			}
-		}
-		if (!account.equals("")) {
-			User conUser = userService.findUser(account);
-			if (conUser != null) {
-				if (conUser.getRole() == 1) {
-					User dbUser = userService.findUser(id);
-					int newRole = user.getRole();
-					if (newRole == 3 || newRole == 2) {
-						dbUser.setRole(newRole);
-						userService.updateUser(dbUser);
-						return null;
+			if (!account.equals("")) {
+				User conUser = userService.findUser(account);
+				if (conUser != null) {
+					if (conUser.getRole() == 1) {
+						// 验证操作者权限
+						User dbUser = userService.findUser(id);
+						int newRole = user.getRole();
+						if (newRole == 3 || newRole == 2) {
+							// 只允许将用户权限在3和2之间切换，超管还是直接改数据库吧
+							dbUser.setRole(newRole);
+							userService.updateUser(dbUser);
+							return null;
+						}
 					}
 				}
 			}
 		}
-
 		return "权限不足";
 	}
 
 	// 检查cookie中用户组权限
 	@GetMapping("/checkUser")
 	public boolean checkUser(HttpServletRequest request) {
-		// 验证操作权限
+		// 验证操作权限是否为超级管理员
 		Cookie cookies[] = request.getCookies();
 		String account = "";
 		for (Cookie cookie : cookies) {

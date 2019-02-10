@@ -3,8 +3,6 @@ package com.example.demo.controller;
 import java.sql.Timestamp;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +14,11 @@ import com.example.demo.entity.Article;
 import com.example.demo.entity.ArticleComment;
 import com.example.demo.entity.ArticleInfo;
 
+/**
+ * 网页前台控制器，提供博客前台页面api 路径为 /api/种类/操作
+ * 查 不涉及数据修改
+ * @author:Maoxian
+ */
 @RestController
 @RequestMapping("/api")
 public class ForeController extends BaseController {

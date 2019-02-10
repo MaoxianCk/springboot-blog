@@ -27,12 +27,15 @@ public class ArticleInfo {
 	// 修改日期
 	private Timestamp modifiedTime;
 	// 该文章对应的文章内容表id号
+	@Deprecated
 	private int articleId;
 
 	// 该文章对应的文章评论表id号
 	@Deprecated
 	private List<Integer> articleCommentIdList;
 
+
+	@Deprecated
 	public ArticleInfo(int id, String title, String summary, boolean isTop, Timestamp createTime,
 			Timestamp modifiedTime, int articleId) {
 		super();
@@ -46,6 +49,7 @@ public class ArticleInfo {
 		this.articleCommentIdList=new ArrayList<Integer>();
 	}
 
+	@Deprecated
 	public ArticleInfo(int id, String title, String summary, boolean isTop, int articleId) {
 		super();
 		this.id = id;
@@ -58,6 +62,20 @@ public class ArticleInfo {
 		this.modifiedTime = timestamp;
 
 		this.articleId = articleId;
+		this.articleCommentIdList = new ArrayList<Integer>();
+	}
+	public ArticleInfo(int id, String title, String summary, boolean isTop) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.summary = summary;
+		this.isTop = isTop;
+
+		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+		this.createTime = timestamp;
+		this.modifiedTime = timestamp;
+
+		this.articleId = -1;
 		this.articleCommentIdList = new ArrayList<Integer>();
 	}
 	
@@ -131,11 +149,13 @@ public class ArticleInfo {
 	public void setModifiedTime(Timestamp modifiedTime) {
 		this.modifiedTime = modifiedTime;
 	}
-
+	
+	@Deprecated
 	public int getArticleId() {
 		return articleId;
 	}
 
+	@Deprecated
 	public void setArticleId(int articleId) {
 		this.articleId = articleId;
 	}

@@ -8,7 +8,6 @@ import com.fasterxml.jackson.annotation.JsonFormat;
  * 文章评论表 article_comment表 实体类
  * 
  * @author:Maoxian
- * @creat:2019-01-21 15:05
  */
 public class ArticleComment {
 	// 文章评论id
@@ -67,7 +66,7 @@ public class ArticleComment {
 	}
 
 	public void setId(int id) {
-		this.id = id;
+		/* id号不提供修改 */
 	}
 
 	public String getContent() {

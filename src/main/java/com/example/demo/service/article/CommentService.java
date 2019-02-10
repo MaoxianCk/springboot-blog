@@ -12,5 +12,4 @@ public interface CommentService {
 	public ArticleComment findComment(int id);
 	public List<ArticleComment> findComments(int articleInfoId);
 	public List<ArticleComment> findComments();
-	
 }

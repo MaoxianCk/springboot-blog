@@ -10,6 +10,11 @@ import java.util.List;
 import com.example.demo.dao.BaseDao;
 import com.example.demo.entity.ArticleContent;
 
+/**
+ * 文章内容Dao实现类
+ * 继承BaseDao 实现 ArticleContentDao 接口
+ * @author:Maoxian
+ */
 public class ArticleContentDaoImpl extends BaseDao implements ArticleContentDao {
 
 	@Override
